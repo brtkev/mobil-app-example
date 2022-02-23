@@ -37,8 +37,8 @@ function App() {
   return (
     <NavigationContainer>
       <Stack.Navigator>
-        <Stack.Screen name="Home" component={HomeScreen} options={{ title: 'Overview' }} />
-        <Stack.Screen name="Details" component={DetailsScreen} options={{ title: 'Overview' }} />
+        <Stack.Screen name="Home" component={HomeScreen} options={{ title: 'Home' }} />
+        <Stack.Screen name="Details" component={DetailsScreen} options={{ title: 'Details' }} />
       </Stack.Navigator>
     </NavigationContainer>
   );
