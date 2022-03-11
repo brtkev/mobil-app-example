@@ -18,7 +18,6 @@ const LoginButton = ({title, onPress, style, theme} : LoginButtonProps) => {
   //assigning are not small, so I prefer to have them memorized
   const buttonContainer = useCallback(() => Object.assign({}, styles.buttonContainer, style), [styles.buttonContainer, style])
   const buttonPressed = useCallback(() => Object.assign({}, styles.buttonPressed, style), [styles.buttonContainer, style])
-  console.log(buttonPressed())
   const touchProps = {
     activeOpacity: 1,
     underlayColor: buttonPressed().backgroundColor, // <-- "backgroundColor" will be always overwritten by "underlayColor"
