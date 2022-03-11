@@ -1,25 +1,21 @@
 import { useCallback, useState } from 'react';
 import {Button, Text, TouchableHighlight, ButtonProps, StyleProp, ViewStyle , TextStyle} from 'react-native';
-import {styles, redStyles} from './styles';
+import {Theme, styleFromTheme} from './styles';
 
 interface LoginButtonProps extends ButtonProps{
   style?: ViewStyle,
-  theme? : "default" | "red",
+  theme? : Theme,
   
 }
 
-const styleSelector = ( theme : "default" | "red" | undefined) => {
-  if(theme === "default"){
-    return styles
-  }else if(theme === "red"){
-    return redStyles;
-  }
-  return styles;
-}
 
+/* you can choose a diferent button style based on theme property*/
 const LoginButton = ({title, onPress, style, theme} : LoginButtonProps) => {
-  const styles = styleSelector(theme);
+  const styles = styleFromTheme(theme);
   const [isPress, setIsPress] = useState(false);
+
+  // memo callbacks, i don't know if assign() is expensive in resources but I do know that the objects it is
+  //assigning are not small, so I prefer to have them memorized
   const buttonContainer = useCallback(() => Object.assign({}, styles.buttonContainer, style), [styles.buttonContainer, style])
   const buttonPressed = useCallback(() => Object.assign({}, styles.buttonPressed, style), [styles.buttonContainer, style])
   console.log(buttonPressed())

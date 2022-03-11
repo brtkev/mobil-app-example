@@ -1,6 +1,8 @@
 import { StyleSheet } from "react-native";
 import colors from 'src/styles/colors'
 
+export type Theme = "default" | "red";
+
 export const styles = StyleSheet.create({
   buttonContainer : {
     paddingHorizontal: 18, paddingVertical: 16,
@@ -59,3 +61,12 @@ export const redStyles = StyleSheet.create({
     color: styles.text.color
   }),
 })
+
+export const styleFromTheme = ( theme : Theme | undefined) => {
+  if(theme === "default"){
+    return styles
+  }else if(theme === "red"){
+    return redStyles;
+  }
+  return styles;
+}
