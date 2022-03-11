@@ -2,43 +2,32 @@ import React from 'react';
 import { Button, View, Text } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import Auth from './components/auth';
+// import Auth from './src/components/auth';
 
+import Home from 'src/pages/home';
+import Login from 'src/pages/login';
+import Register from 'src/pages/register';
 
+import { RootStackParamList } from './src/components/types';
+const Stack = createNativeStackNavigator<RootStackParamList>();
 
-function DetailsScreen({navigation}) {
-  return (
-    <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-      <Text>Details Screen</Text>
-      <Button
-        title="Go to Home"
-        onPress={() => navigation.navigate('Home')}
-      />
-
-    </View>
-  );
-}
-function HomeScreen({name, navigation}) {
-  return (
-    <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-      <Auth />
-      <Button
-        title={`Go to Details`}
-        onPress={() => navigation.navigate('Details')}
-      />
-
-    </View>
-  );
-}
-
-const Stack = createNativeStackNavigator();
 
 function App() {
-  return (
+  // return (
+  //   <NavigationContainer >
+  //     <Stack.Navigator>
+  //       <Stack.Screen name="Home" component={Home} options={{ title: 'Home' }} />
+  //       <Stack.Screen name="Login" component={Login} />
+  //       {/* <Stack.Screen name="Details" component={DetailsScreen} options={{ title: 'Details' }} /> */}
+  //     </Stack.Navigator>
+  //   </NavigationContainer>
+  // );
+  return(
     <NavigationContainer>
-      <Stack.Navigator>
-        <Stack.Screen name="Home" component={HomeScreen} options={{ title: 'Home' }} />
-        <Stack.Screen name="Details" component={DetailsScreen} options={{ title: 'Details' }} />
+      <Stack.Navigator initialRouteName='Home'>
+        <Stack.Screen name="Home" component={Home} options={{headerShown: false}} />
+        <Stack.Screen name="Login" component={Login} options={{headerShown: false}} />
+        <Stack.Screen name="Register" component={Register} options={{headerShown: false}} />
       </Stack.Navigator>
     </NavigationContainer>
   );
@@ -62,12 +51,3 @@ export default App;
 //     </View>
 //   );
 // }
-
-// const styles = StyleSheet.create({
-//   container: {
-//     flex: 1,
-//     backgroundColor: '#fff',
-//     alignItems: 'center',
-//     justifyContent: 'center',
-//   },
-// });
