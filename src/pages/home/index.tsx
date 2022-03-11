@@ -2,7 +2,7 @@ import {View, Button, Image, Text, StatusBar, Alert} from 'react-native';
 import styles from './styles';
 import LoginButton from 'src/components/loginButton';
 
-import { RootStackParamList } from '../../components/types';
+import { RootStackParamList } from 'src/components/types';
 import { NativeStackScreenProps  } from '@react-navigation/native-stack';
 type props = NativeStackScreenProps<RootStackParamList, 'Home'>;
 
@@ -27,7 +27,7 @@ export default function Home({navigation  } : props) {
           {/* <Button title='INICIAR SESIÓN' onPress={() => Alert.alert('Simple Button pressed')} /> */}
           <View style={styles.buttonsContainer} >
             <LoginButton style={{marginRight:16}} title='INICIAR SESIÓN' onPress={() => navigation.navigate('Login')} />
-            <LoginButton style={styles.redButton} title='CREAR CUENTA' onPress={() => navigation.navigate('Register')} />
+            <LoginButton theme="red" title='CREAR CUENTA' onPress={() => navigation.navigate('Register')} />
           </View>
           
         </View>

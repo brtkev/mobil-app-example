@@ -1,33 +1,6 @@
 import { StyleSheet, Dimensions } from "react-native";
 import colors from "../../styles/colors";
 
-// const styles = StyleSheet.create({
-//   container: {
-//     // backgroundColor: 'red',
-//     // minWidth: '100%',
-//     minHeight: '100%',
-//     paddingHorizontal: '16px',
-//     paddingBottom: '24px',
-
-//   },
-//   // image: {
-//   //   width : '100vw',
-//   //   height : 'auto'
-//   // },
-//   // loginButton: {
-//   //   fontFamily : 'Poppins',
-//   //   fontWeight : '500',
-//   //   fontSize : 14,
-//   //   lineHeight: 16,
-//   //   display: "flex",
-//   //   alignItems: "center",
-//   //   textAlign: "center",
-//   //   letterSpacing: 1.25,
-//   //   color: '#FFFFFFE5',
-//   //   opacity: 0.87,
-//   //   padding: '16px 18px'
-//   // }
-// });
 const styles = StyleSheet.create({
   container : {
     backgroundColor: colors.background, minHeight: '100%', display: "flex", 
@@ -63,27 +36,3 @@ const styles = StyleSheet.create({
 
 });
 export default styles;
-/* BUTTON */
-
-// font-family: 'Poppins';
-// font-style: normal;
-// font-weight: 500;
-// font-size: 14px;
-// line-height: 16px;
-// /* identical to box height, or 114% */
-
-// display: flex;
-// align-items: center;
-// text-align: center;
-// letter-spacing: 1.25px;
-
-// color: rgba(255, 255, 255, 0.9);
-
-// opacity: 0.87;
-
-// /* Inside auto layout */
-
-// flex: none;
-// order: 0;
-// flex-grow: 0;
-// margin: 0px 10px;

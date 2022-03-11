@@ -16,4 +16,4 @@ web-build/
 
 yarn.lock
 .env
-.expo-shared
+.expo-shared/
