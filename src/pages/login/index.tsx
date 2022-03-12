@@ -14,7 +14,8 @@ export default function Login() {
 				<TextApp style={{fontSize: 34, lineHeight: 36,marginBottom: 24}} >
 					Iniciar Sesión
 				</TextApp>
-				<LoginInput />
+				<LoginInput label='Correo Electrónico' placeholder='Correo Electrónico' style={{marginBottom: 24}} />
+				<LoginInput label='Contraseña' placeholder='Contraseña' password/>
 			</View>
 		</View>
 	);

@@ -7,11 +7,11 @@ const styles = StyleSheet.create({
     backgroundColor: colors.background,
   },
   contentBox:{
-    display:"flex", justifyContent: "center", alignItems: "center", borderColor: "#fff", borderWidth: 1,
-    minHeight: "100%"
+    display:"flex", justifyContent: "flex-start", alignItems: "center", padding: 16,
+    minHeight: "100%", 
   },
   logo : {
-    width: 72, height:80, marginBottom: 40
+    width: 72, height:80, marginBottom: 40, marginTop: 50 
   },
 });
 
