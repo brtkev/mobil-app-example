@@ -1,7 +1,7 @@
 import { StyleSheet } from "react-native";
 import colors from 'src/styles/colors'
 
-export type Theme = "default" | "red";
+export type Theme = "default" | "red" | "signin";
 
 export const styles = StyleSheet.create({
   buttonContainer : {
@@ -62,11 +62,50 @@ export const redStyles = StyleSheet.create({
   }),
 })
 
+export const signin = StyleSheet.create({
+  buttonContainer : {
+  paddingHorizontal: 24, paddingVertical: 16,
+  backgroundColor: colors.primary[400],
+  borderRadius: 32,
+  display: "flex",
+  alignItems: "center",
+  opacity: 0.87,
+  borderColor: colors.primary[400],
+  borderWidth: 1,
+  borderStyle: "solid",
+    },
+  buttonPressed: {
+    paddingHorizontal: 24, paddingVertical: 16,
+    backgroundColor: colors.primary[300],
+    borderRadius: 32,
+    display: "flex",
+    alignItems: "center",
+    opacity: 0.87,
+    borderColor: colors.primary[300],
+    borderWidth: 1,
+    borderStyle: "solid",
+    },
+  text: {
+    color: colors.textPrimary,
+    lineHeight: 16,
+    fontSize: 14,
+    letterSpacing: 1.25
+  },
+  pressedText: {
+    color: colors.textPrimary,
+    lineHeight: 16,
+    fontSize: 14,
+    letterSpacing: 1.25
+  },
+})
+
 export const styleFromTheme = ( theme : Theme | undefined) => {
   if(theme === "default"){
     return styles
   }else if(theme === "red"){
     return redStyles;
+  }else if(theme === "signin"){
+    return signin;
   }
   return styles;
 }

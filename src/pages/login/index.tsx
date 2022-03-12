@@ -1,6 +1,8 @@
 import { View, Text, StatusBar, ScrollView, Image } from 'react-native';
-import LoginInput from 'src/components/loginInput';
+import Separator from 'src/components/separator';
+
 import TextApp from 'src/components/textApp';
+import LoginForm from './form';
 import styles from './styles';
 
 export default function Login() {
@@ -14,8 +16,8 @@ export default function Login() {
 				<TextApp style={{fontSize: 34, lineHeight: 36,marginBottom: 24}} >
 					Iniciar Sesión
 				</TextApp>
-				<LoginInput label='Correo Electrónico' placeholder='Correo Electrónico' style={{marginBottom: 24}} />
-				<LoginInput label='Contraseña' placeholder='Contraseña' password/>
+				<LoginForm />
+				<Separator />
 			</View>
 		</View>
 	);
