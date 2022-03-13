@@ -1,4 +1,4 @@
-import {View, Button, Image, Text, StatusBar, Alert} from 'react-native';
+import {View, Image, Text, StatusBar, Alert} from 'react-native';
 import styles from './styles';
 import LoginButton from 'src/components/loginButton';
 

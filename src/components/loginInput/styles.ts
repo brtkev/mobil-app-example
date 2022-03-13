@@ -25,7 +25,7 @@ const styles = StyleSheet.create({
   eyeIcon: {
     width: 22,
     height: 15,
-    marginRight: 22
+    
   }
 });
 export default styles;

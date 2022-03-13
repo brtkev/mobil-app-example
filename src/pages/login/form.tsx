@@ -36,8 +36,8 @@ const LoginForm = () =>  {
       <LoginInput label='Correo Electrónico' placeholder='Correo Electrónico' 
       style={{marginBottom: 24}} {...register("email")} error={errors.email}
       onChangeText={(v : string) => setValue("email", v)} />
-      <LoginInput label='Contraseña' placeholder='Contraseña' {...register("password")} 
-      style={{marginBottom: 32}} error={errors.password}
+      <LoginInput label='Contraseña' placeholder='Contraseña' {...register("password")} secureTextEntry
+      style={{marginBottom: 32}} error={errors.password} textContentType="password" autoCompleteType="password"
       onChangeText={(v : string) => setValue("password", v)} password/>
       <View style={{width:"100%", display:"flex", alignItems:"flex-end", marginBottom:24}} >
         <TextApp style={{color:colors.secondary[200]}} >¿Olvidaste tu contraseña?</TextApp>
