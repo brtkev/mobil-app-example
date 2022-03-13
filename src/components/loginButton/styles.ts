@@ -1,7 +1,7 @@
-import { StyleSheet } from "react-native";
+import { StyleSheet, ImageStyle } from "react-native";
 import colors from 'src/styles/colors'
 
-export type Theme = "default" | "red" | "signin";
+export type Theme = "default" | "red" | "signin" | "social";
 
 export const styles = StyleSheet.create({
   buttonContainer : {
@@ -14,7 +14,6 @@ export const styles = StyleSheet.create({
     borderColor: colors.textPrimary,
     borderWidth: 1,
     borderStyle: "solid",
-    // padding: '16px 18px'
   },
   buttonPressed: {
     paddingHorizontal: 18, paddingVertical: 16,
@@ -99,6 +98,61 @@ export const signin = StyleSheet.create({
   },
 })
 
+export const social = StyleSheet.create({
+  buttonContainer : {
+    paddingHorizontal: 18, paddingVertical: 16,
+    backgroundColor: "transparent",
+    borderRadius: 32,
+    display: "flex",
+    alignItems: "center",
+    opacity: 0.87,
+    borderColor: colors.textPrimary,
+    borderWidth: 1,
+    borderStyle: "solid",
+    width: "100%"
+  },
+  buttonPressed: {
+    paddingHorizontal: 18, paddingVertical: 16,
+    backgroundColor: "transparent",
+    borderRadius: 32,
+    display: "flex",
+    alignItems: "center",
+    opacity: 0.87,
+    borderColor: colors.terciary[400],
+    borderWidth: 1,
+    borderStyle: "solid",
+    width: "100%"
+  },
+  text:{
+    fontWeight : '500',
+    fontSize : 14,
+    lineHeight: 16,
+    letterSpacing: 1.25,
+    color: colors.textPrimary,
+    opacity: 0.87,
+    textAlign: "center",
+  },
+  pressedText: {
+    fontWeight : '500',
+    fontSize : 14,
+    lineHeight: 16,
+    letterSpacing: 1.25,
+    color: colors.terciary[400],
+    opacity: 0.87,
+    textAlign: "center",
+  },
+});
+
+export const logoStyle = StyleSheet.create({
+  container : {
+    position: "absolute", top: 0, left: 0, right: 0, bottom: 0,
+    display:"flex", justifyContent: "center", alignItems: "flex-start"
+  },
+  image : {
+    width: 24, height: 24, marginLeft:16
+  }
+})
+
 export const styleFromTheme = ( theme : Theme | undefined) => {
   if(theme === "default"){
     return styles
@@ -106,6 +160,8 @@ export const styleFromTheme = ( theme : Theme | undefined) => {
     return redStyles;
   }else if(theme === "signin"){
     return signin;
+  }else if(theme === "social"){
+    return social;
   }
   return styles;
 }
