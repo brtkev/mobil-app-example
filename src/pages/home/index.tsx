@@ -4,13 +4,12 @@ import LoginButton from 'src/components/loginButton';
 
 import { RootStackParamList } from 'src/components/types';
 import { NativeStackScreenProps  } from '@react-navigation/native-stack';
+import PageWrapper from 'src/components/pageWrapper';
 type props = NativeStackScreenProps<RootStackParamList, 'Home'>;
 
 export default function Home({navigation  } : props) {
     return (
-      // <View style={styles.container} >
-      <View style={styles.container} >
-        <StatusBar />
+      <PageWrapper>
         <Image  style={styles.welcomeImage} source={require('../../../assets/welcome-image.png')} />
         <View style={styles.contentBox} >
           <View  style={styles.textBox}>
@@ -31,11 +30,7 @@ export default function Home({navigation  } : props) {
           </View>
           
         </View>
-        {/* <Button
-          title={`Go to Details`}
-          onPress={() => navigation.navigate('Login')}
-        /> */}
-      </View>
+      </PageWrapper>
     );
   }
 
