@@ -1,13 +1,11 @@
-import {ScrollView, Text, StatusBar} from 'react-native'
+import PageWrapper from 'src/components/pageWrapper'
+import TextApp from 'src/components/textApp';
 
 export default function Register(){
 
   return(
-    <ScrollView>
-      <StatusBar />
-      <Text>
-        Register Page
-      </Text>
-    </ScrollView>
+    <PageWrapper>
+      <TextApp>register page</TextApp>
+    </PageWrapper>
   );
 }
