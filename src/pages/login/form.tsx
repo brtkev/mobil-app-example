@@ -15,10 +15,6 @@ type loginInput = {
   password: string,
 };
 
-
-
-
-
 const LoginForm = () =>  {
   const { register, handleSubmit, formState: { errors }, setValue } = useForm<loginInput>({resolver : yupResolver(loginSchema)});
   const [spinnerFlag, setSpinnerFlag] = useState(false);
