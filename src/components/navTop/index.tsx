@@ -1,8 +1,9 @@
 import {Image, View, TouchableOpacity} from 'react-native'
 import styles from './styles'
 
-
 import {AnyRootStackScreenProps} from 'src/components/types'
+
+//navTop with return button, returns to the last stack screen
 const NavTop = ({navigation, route} : AnyRootStackScreenProps) => {
   return(
     <View style={styles.main}>

@@ -7,7 +7,7 @@ const styles = StyleSheet.create({
     padding: 16,
     borderTopLeftRadius: 4,
     borderTopRightRadius: 4,
-    width: '100%'
+    width: '100%',
   },
   focus:{
     backgroundColor : colors.inputs,
@@ -20,7 +20,8 @@ const styles = StyleSheet.create({
   iconContainer:{
     position: "absolute",
     justifyContent: "center",
-    alignItems: "flex-end", top: 0, left: 0, right: 0, bottom: 0, 
+    alignItems: "flex-end", top: 0, right: 0, bottom: 0, 
+    paddingHorizontal: 24
   },
   eyeIcon: {
     width: 22,

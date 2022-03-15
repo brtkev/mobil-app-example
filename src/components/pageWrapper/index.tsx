@@ -1,6 +1,8 @@
 import { View, StatusBar, SafeAreaView, ScrollView, ViewProps } from 'react-native';
 import styles from './styles';
 
+
+//wraps a default scrollable and style for the page
 const PageWrapper = ({children} : ViewProps) => {
 
   return(

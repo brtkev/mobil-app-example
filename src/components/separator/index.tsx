@@ -2,6 +2,8 @@ import { View, ViewProps } from 'react-native';
 import TextApp from 'src/components/textApp'
 import styles from './style';
 
+//adds a separator component
+//---------- o -----------
 const  Separator = ({style}: ViewProps ) => {
 
   return(

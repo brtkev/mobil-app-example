@@ -2,8 +2,11 @@ import React from 'react'
 
 type ReturnType<T extends any> = React.LegacyRef<T> & React.MutableRefObject<T>;
 
-export default function <T extends any>(fowardRef  : React.ForwardedRef<T>) : ReturnType  {
-  const targetRef = React.useRef<ReturnType<T>>()
+
+//takes a fowardRef ref and returns an useable ref for the component
+//the fowardRef still works but now as targetRef
+export default function <T extends any>(fowardRef  : React.ForwardedRef<T>) : ReturnType<T>  {
+  const targetRef = React.useRef<T | any>()
 
   React.useEffect(() => {
 
@@ -16,5 +19,5 @@ export default function <T extends any>(fowardRef  : React.ForwardedRef<T>) : Re
     }
   }, [fowardRef])
 
-  return targetRef
+  return targetRef as ReturnType<T>
 }

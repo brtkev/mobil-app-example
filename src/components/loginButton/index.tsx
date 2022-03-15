@@ -20,12 +20,15 @@ const getLogoSource = (social : socialType | undefined) => {
     return require("assets/google-logo.png");
   }
 }
+
+//Landing / login button component with diferent styles
 /* you can choose a diferent button style based on theme property*/
 // the social prop only works with the social theme and it adds a logo to the button
 const LoginButton = React.forwardRef<any, LoginButtonProps>((props, ref): React.ReactElement =>{
   const {title, style, theme, social, spinner, ...buttonProps} = props;
-  const styles = styleFromTheme(theme);
-  const [isPress, setIsPress] = useState(false);
+  const styles = styleFromTheme(theme); //choose a style from a theme
+  const [isPress, setIsPress] = useState(false); //state for pressed style
+
   const touchProps = {
     activeOpacity: 1,
     underlayColor: styles.buttonPressed.backgroundColor, // <-- "backgroundColor" will be always overwritten by "underlayColor"
