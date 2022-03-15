@@ -8,6 +8,7 @@ import {RootStackScreenProps, RegisterStackParamList} from 'src/components/types
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import LoginInput from 'src/components/loginInput';
 import Select from 'src/components/loginInput/select';
+import LoginButton from 'src/components/loginButton';
 const Stack = createNativeStackNavigator<RegisterStackParamList>()
 
 export default function Register(props : RootStackScreenProps<"Register">){
@@ -20,7 +21,6 @@ export default function Register(props : RootStackScreenProps<"Register">){
 }
 
 function PhoneVerify(props : any){
-
   return(
     <PageWrapper>
       <NavTop {...props} />
@@ -29,6 +29,7 @@ function PhoneVerify(props : any){
         <TextApp style={styles.textP} >Lorem ipsum dolor sit amet, consectetu radipis cinelit. Vestibulum.</TextApp>
         <Select style={{marginBottom:16}} placeholder="Selecciona tu país" />
         <LoginInput placeholder='Numero de telefono' />
+        <LoginButton leftIcon={require('assets/icons/smartphone.png')} title='VERIFICAR MI TELEFONO' onPress={() => console.log("press")} />
       </View>
     </PageWrapper>
   );

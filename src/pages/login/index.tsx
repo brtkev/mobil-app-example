@@ -23,8 +23,8 @@ export default function Login({navigation} : props) {
 			</TextApp>
 			<LoginForm />
 			<Separator style={{marginBottom: 24, marginTop:32}} />
-			<LoginButton theme='social' social='google' style={{marginBottom: 16}} title='Continuar con Google' onPress={() => console.log("google press")} />
-			<LoginButton theme='social' social='facebook' style={{marginBottom: 44}} title='Continuar con Facebook' onPress={() => console.log("facebook press")} />
+			<LoginButton theme='social' leftIcon={require('assets/logos/google-logo.png')} style={{marginBottom: 16}} title='Continuar con Google' onPress={() => console.log("google press")} />
+			<LoginButton theme='social' leftIcon={require('assets/logos/facebook-logo.png')} style={{marginBottom: 44}} title='Continuar con Facebook' onPress={() => console.log("facebook press")} />
 			<GoToRegister onPress={() => navigation.navigate("Register")} />
 		</View></PageWrapper>
 	);
