@@ -1,8 +1,7 @@
-import React, { useCallback, useState } from 'react';
-import {View, Text, TouchableHighlight, ButtonProps, StyleProp, ViewStyle , Animated, Image} from 'react-native';
+import React, { useState } from 'react';
+import {View, Text, TouchableHighlight, ButtonProps, ViewStyle , Animated, Image} from 'react-native';
 import {Theme, styleFromTheme, logoStyle, disabled, styles as _styles, spin, spinnerLoop} from './styles';
 
-type socialType = "facebook" |  "google"
 interface LoginButtonProps extends ButtonProps{
   style?: ViewStyle,
   theme? : Theme,
