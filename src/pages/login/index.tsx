@@ -7,9 +7,9 @@ import LoginForm from './form';
 import GoToRegister from './goToRegister';
 import styles from './styles';
 
+import PageWrapper from 'src/components/pageWrapper';
 import { RootStackParamList } from 'src/components/types'
 import { NativeStackScreenProps  } from '@react-navigation/native-stack';
-import PageWrapper from 'src/components/pageWrapper';
 type props = NativeStackScreenProps<RootStackParamList, 'Login'>;
 
 export default function Login({navigation} : props) {

@@ -1,4 +1,4 @@
-import React, { useState, useMemo } from 'react';
+import React, { useState, useRef, RefObject } from 'react';
 import {View, TextInput, TextInputProps, Image, TouchableOpacity} from 'react-native';
 import { FieldError } from 'react-hook-form';
 
@@ -16,9 +16,9 @@ interface LoginInputProps extends TextInputProps{
 const LoginInput = React.forwardRef<any, LoginInputProps>((props, ref): React.ReactElement =>{
   const {label, password, style, error, secureTextEntry, name,...inputProps } = props;
   const [isFocus, setIsFocus] = useState(false);
-  const [isSecure, setIsSecure] = useState(secureTextEntry);
+  const [isSecure, setIsSecure] = useState(password);
+  const inputRef = useRef<TextInput | any>(ref);  
   
-
   let passwordComponent = undefined
   if(password){
     passwordComponent = <View  style={styles.iconContainer} >
@@ -32,14 +32,14 @@ const LoginInput = React.forwardRef<any, LoginInputProps>((props, ref): React.Re
     <View style={[{width:"100%"}, style]}>
       <View style={ [isFocus ? styles.focus : styles.container,
         label && isFocus ? {paddingTop : 4, paddingBottom : 8} : {},
-        error ? {borderBottomColor : colors.red[400]} : {} ]}  >
+        error ? {borderBottomColor : colors.red[400]} : {} ]}   >
 
         {isFocus && props.label && <TextApp style={{color : (error ? colors.red[400] : colors.secondary[200]), fontSize:12, lineHeight:16}} >
           {props.label}</TextApp>}
 
-        <TextInput onTouchStart={() => setIsFocus(true)} onEndEditing={()=>setIsFocus(false)}
+        <TextInput onFocus={() => setIsFocus(true)} onEndEditing={()=>setIsFocus(false)}
         autoCapitalize="none" placeholderTextColor={"#fff"} style={{color:"#fff"}} ref={ref}
-        secureTextEntry={isSecure} {...inputProps} />
+        secureTextEntry={isSecure} {...inputProps}  />
         {passwordComponent}
       </View>
       <TextApp style={{color:colors.red[400]}}>{error && error.message}</TextApp>

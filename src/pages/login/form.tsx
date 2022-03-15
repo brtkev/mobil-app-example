@@ -1,5 +1,5 @@
-import { useState, useRef } from "react";
-import { View, Alert } from "react-native"; 
+import { useState } from "react";
+import { Alert } from "react-native"; 
 
 import { useForm, SubmitHandler } from "react-hook-form";
 import { loginSchema } from 'src/components/formSchemas';
@@ -10,15 +10,18 @@ import LoginButton from "src/components/loginButton";
 import Form from "src/components/form";
 import GoToForgetPassword from "./goToForgetPassword";
 
+import TextApp from 'src/components/textApp'
+
 type loginInput = {
   email: string,
   password: string,
 };
 
 const LoginForm = () =>  {
-  const { register, handleSubmit, formState: { errors }, setValue } = useForm<loginInput>({resolver : yupResolver(loginSchema)});
+  const { register, handleSubmit, formState: { errors }, setValue, watch } = useForm<loginInput>({mode : "onChange", resolver : yupResolver(loginSchema)});
+  
+  const watchers = watch(["email", "password"]);
   const [spinnerFlag, setSpinnerFlag] = useState(false);
-  const refs = useRef(Array(3));
   //onSubmit
   const submitHandler : SubmitHandler<loginInput> = (data, ev) => {
     Alert.alert("data", JSON.stringify(data));
@@ -26,14 +29,17 @@ const LoginForm = () =>  {
     //after fetching the results from the db if the data fails the spinner should stop
     setTimeout(() => setSpinnerFlag(false), 2000);
    }
+
   const sumbitCallback = handleSubmit(submitHandler);
   return(
     <Form {...{register, setValue, errors}} >
       <LoginInput  label='Correo Electrónico' placeholder='Correo Electrónico' name="email" style={{marginBottom: 24}} />
       <LoginInput label='Contraseña' placeholder='Contraseña' name="password" style={{marginBottom: 32}}
-       onEndEditing={sumbitCallback} />
+       password />
       <GoToForgetPassword onPress={() => console.log("press on forget password")} />
-      <LoginButton style={{width:"100%"}} theme="signin" title="INGRESAR" onPress={sumbitCallback} />
+
+      <LoginButton style={{width:"100%"}} theme="signin" title="INGRESAR" spinner={spinnerFlag}
+       onPress={sumbitCallback} disabled={!(watchers.every((v) => v))/*false if all inputs have values*/} />
     </Form>
   )
 }

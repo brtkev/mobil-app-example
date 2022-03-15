@@ -1,7 +1,38 @@
-import { StyleSheet, ImageStyle } from "react-native";
+import { StyleSheet, Animated, Easing } from "react-native";
 import colors from 'src/styles/colors'
 
 export type Theme = "default" | "red" | "signin" | "social";
+
+export const disabled = StyleSheet.create({
+  container: {
+    backgroundColor : colors.textTerciary,
+    borderColor : colors.textTerciary
+  },
+  text:{
+    color: colors.textPrimary
+  }
+});
+
+const spinValue = new Animated.Value(0);
+
+// First set up animation 
+export const spinnerLoop =  Animated.loop(
+  Animated.timing(
+      spinValue,
+    {
+      toValue: 1,
+      duration: 1000,
+      easing: Easing.linear, // Easing is an additional import from react-native
+      useNativeDriver: true  // To make use of native driver for performance
+    }
+  )
+)
+
+// Next, interpolate beginning and end values (in this case 0 and 1)
+export const spin = spinValue.interpolate({
+  inputRange: [0, 1],
+  outputRange: ['0deg', '360deg']
+})
 
 export const styles = StyleSheet.create({
   buttonContainer : {
@@ -43,7 +74,10 @@ export const styles = StyleSheet.create({
     color: colors.terciary[400],
     opacity: 0.87,
     textAlign: "center",
-  }  
+  },
+  spinner: {
+    width: 24, height: 24, 
+  }
 });
 
 export const redStyles = StyleSheet.create({
