@@ -15,9 +15,9 @@ interface LoginButtonProps extends ButtonProps{
 const getLogoSource = (social : socialType | undefined) => {
   if(!social) return social;
   if(social === "facebook"){
-    return require("assets/facebook-logo.png");
+    return require("assets/logos/facebook-logo.png");
   }else if(social === "google"){
-    return require("assets/google-logo.png");
+    return require("assets/logos/google-logo.png");
   }
 }
 
@@ -49,7 +49,7 @@ const LoginButton = React.forwardRef<any, LoginButtonProps>((props, ref): React.
     <TouchableHighlight {...touchProps} ref={ref} >
       {spinner ?
       <Animated.Image style={{transform: [{rotate: spin}], width: 24, height: 24}} 
-      source={require('assets/spinner.png')} /> :
+      source={require('assets/icons/spinner.png')} /> :
       <>
       <Text style={[isPress ? styles.pressedText : styles.text, props.disabled ? disabled.text: {}]} >{title}</Text>
       {theme==="social" && requireLogo && <View style={logoStyle.container}>

@@ -12,7 +12,7 @@ const EyeButton = ({password, onPress} : EyeButtonProps) => {
   return(
     password  ? 
     <View  style={[styles.iconContainer]} onTouchEnd={onPress} >
-        <Image style={styles.eyeIcon} source={require('assets/eye-icon.png')} />
+        <Image style={styles.eyeIcon} source={require('assets/icons/eye-icon.png')} />
     </View>
     : null
   )

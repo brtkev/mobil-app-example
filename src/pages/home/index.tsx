@@ -10,7 +10,7 @@ type props = NativeStackScreenProps<RootStackParamList, 'Home'>;
 export default function Home({navigation  } : props) {
     return (
       <PageWrapper>
-        <Image  style={styles.welcomeImage} source={require('../../../assets/welcome-image.png')} />
+        <Image  style={styles.welcomeImage} source={require('assets/images/welcome-image.png')} />
         <View style={styles.contentBox} >
           <View  style={styles.textBox}>
             <Text style={styles.whitepayText} >

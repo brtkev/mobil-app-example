@@ -14,5 +14,6 @@ NativeStackScreenProps<RootStackParamList, T>;
 export type AnyRootStackScreenProps = NativeStackScreenProps<RootStackParamList, keyof RootStackParamList>;
 
 export type RegisterStackParamList = {
-  Phone: undefined;
+  Phone: {"country" : string} | undefined;
+  CountrySelect: undefined;
 }

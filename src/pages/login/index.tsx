@@ -17,7 +17,7 @@ export default function Login({navigation} : props) {
 
 	return (
 		<PageWrapper><View style={styles.contentBox} >
-			<Image source={require('assets/logo.png')} style={styles.logo} />
+			<Image source={require('assets/logos/logo.png')} style={styles.logo} />
 			<TextApp style={{fontSize: 34, lineHeight: 36,marginBottom: 24}} >
 				Iniciar Sesión
 			</TextApp>
