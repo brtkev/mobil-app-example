@@ -1,4 +1,4 @@
-import { View, TouchableOpacity, TouchableOpacityProps, Image, StyleSheet } from "react-native"
+import { View, TouchableOpacity, TouchableOpacityProps, Image, StyleSheet, TouchableHighlight } from "react-native"
 import colors from "src/styles/colors";
 import TextApp from "../textApp";
 import styles from './styles';
@@ -18,13 +18,16 @@ const _styles = StyleSheet.create({
 interface Props extends TouchableOpacityProps {
   placeholder? : string;
   option? : boolean;
+  selected? : boolean;
   rightIcon? : any; //image objects must be any
 }
 
 const Select = (props : Props) => {
-  const { style, placeholder, option, rightIcon,...TouchableProps } = props;
+  const { style, placeholder, option, rightIcon, selected, ...TouchableProps } = props;
   if(option)return(
-    <TouchableOpacity style={[{width:"100%"}, style]} {...TouchableProps}>
+    <TouchableHighlight style={[{width:"100%"}, style, {borderRadius: 16, borderTopLeftRadius: 16, borderTopRightRadius: 16}]} {...TouchableProps}
+      underlayColor={colors.secondary[300]}
+    >
       <View style={ [styles.container, {display:"flex", flexDirection:"row", borderRadius: 16, borderTopLeftRadius: 16, borderTopRightRadius: 16}]} >
         {rightIcon && <Image style={{height: 25, width: "auto", aspectRatio: 1, marginRight: 16, borderRadius: 4}} source={rightIcon} />}
         <TextApp style={{color:colors.textPrimary, fontSize: 16}}>{placeholder}</TextApp>
@@ -32,17 +35,20 @@ const Select = (props : Props) => {
           <Image style={_styles.icon} source={require('assets/icons/right-pointer.png')} />
         </View>
       </View>
-    </TouchableOpacity>
+    </TouchableHighlight>
   )
   return(
-    <TouchableOpacity style={[{width:"100%"}, style]} {...TouchableProps}>
-      <View style={ [styles.container]} >
-        <TextApp style={{color:colors.textTerciary}}>{placeholder}</TextApp>
+    <TouchableHighlight style={[{width:"100%"}, style, {borderTopLeftRadius: 4, borderTopRightRadius: 4}]} {...TouchableProps}
+      underlayColor={colors.secondary[300]}
+    >
+      <View style={ [styles.container, {display:"flex", flexDirection:"row", }]} >
+        {rightIcon && <Image style={{height: 25, width: "auto", aspectRatio: 1, marginRight: 16, borderRadius: 4}} source={rightIcon} />}
+        <TextApp style={{color: selected ? colors.textPrimary : colors.textTerciary}}>{placeholder}</TextApp>
         <View style={_styles.iconContainer}>
           <Image style={_styles.icon} source={require('assets/icons/down-pointer.png')} />
         </View>
       </View>
-    </TouchableOpacity>
+    </TouchableHighlight>
   )
   
 }; export default Select;
