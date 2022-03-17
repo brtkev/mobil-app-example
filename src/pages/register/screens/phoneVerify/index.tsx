@@ -4,7 +4,7 @@ import TextApp from 'src/components/textApp';
 import {View, TouchableOpacity } from 'react-native'
 import { useForm } from 'react-hook-form';
 import {RegisterStackScreenProps} from 'src/components/types'
-import styles from '../styles';
+import styles from './styles';
 import LoginInput from 'src/components/loginInput';
 import Select from 'src/components/loginInput/select';
 import LoginButton from 'src/components/loginButton';
