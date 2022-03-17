@@ -14,6 +14,12 @@ NativeStackScreenProps<RootStackParamList, T>;
 export type AnyRootStackScreenProps = NativeStackScreenProps<RootStackParamList, keyof RootStackParamList>;
 
 export type RegisterStackParamList = {
-  Phone: {"country" : string} | undefined;
+  Phone? : {
+    "placeholder" : string,
+    "rightIcon"? : string,
+    "initialNumber" : number
+  };
   CountrySelect: undefined;
 }
+export type RegisterStackScreenProps<T extends keyof RegisterStackParamList > = NativeStackScreenProps<RegisterStackParamList, T>;
+export type AnyRegisterStackScreenProps = NativeStackScreenProps<RegisterStackParamList, keyof RegisterStackParamList>;

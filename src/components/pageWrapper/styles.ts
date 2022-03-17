@@ -8,7 +8,7 @@ const styles = StyleSheet.create({
     backgroundColor: colors.background,
   },
   scrollView:{
-    flex: 1, width:"100%", display: "flex", borderWidth: 1, borderColor: "red"
+    flex: 1, width:"100%", display: "flex", minHeight: "100%"
   },
 });
 

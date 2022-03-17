@@ -4,10 +4,7 @@ import colors from "src/styles/colors";
 
 export default StyleSheet.create({
   main:{
-    padding: 16, display: "flex", flex: 1, justifyContent : "space-between", borderWidth: 1,borderColor: "white"
-  },
-  bottomContainer:{
-    position: "absolute", bottom: 0
+    display:"flex", justifyContent: "space-between", padding: 16, flex:1
   },
   title:{
     fontSize: 32, lineHeight: 32, marginBottom: 16, 
