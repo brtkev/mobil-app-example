@@ -17,9 +17,14 @@ export type RegisterStackParamList = {
   Phone? : {
     "placeholder" : string,
     "rightIcon"? : string,
-    "initialNumber" : number
+    "initialNumber" : number,
+    "country": string
   };
-  CountrySelect: undefined;
+  CountrySelect: undefined,
+  VerifyCode: {
+    "phone" : string, country: string
+  }
+  
 }
 export type RegisterStackScreenProps<T extends keyof RegisterStackParamList > = NativeStackScreenProps<RegisterStackParamList, T>;
 export type AnyRegisterStackScreenProps = NativeStackScreenProps<RegisterStackParamList, keyof RegisterStackParamList>;

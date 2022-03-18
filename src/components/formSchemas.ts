@@ -1,5 +1,12 @@
 import * as yup from 'yup';
 
+const onlyNumbersRegex = /^\d+$/;
+export const verifyCodeSchema = yup.object().shape({
+  code: yup.string().required("ingresa el codigo")
+  .min(4, "el minimo es 4").max(8, "el maximo es 8")
+  .matches(onlyNumbersRegex, "ingrese solo numeros")
+})
+
 export const loginSchema = yup.object().shape({
   email: yup.string()
     .email('ingrese un email valido')
