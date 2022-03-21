@@ -22,9 +22,9 @@ export const loginSchema = yup.object().shape({
 
 
 export const useInformationSchema = yup.object().shape({
-  name: yup.string().required('ingresa tu nombre'),
-  lastName: yup.string().required('ingresa tu apellido'),
-  email: yup.string()
+  name: yup.string().trim().required('ingresa tu nombre'),
+  lastName: yup.string().trim().required('ingresa tu apellido'),
+  email: yup.string().trim()
     .lowercase()
     .email('ingrese un email valido')
     .required('ingresa un email'),
