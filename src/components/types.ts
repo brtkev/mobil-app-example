@@ -26,6 +26,9 @@ export type RegisterStackParamList = {
   },
   UserInfo: {
     phone : string, country: string
+  },
+  UserPassword : {
+    phone : string, country: string, name: string, lastName: string, email: string
   }
   
 }

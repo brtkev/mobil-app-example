@@ -43,7 +43,7 @@ export default function UserInformation(props : RegisterStackScreenProps<"UserIn
     
   }, [])
   const submitHandler = (data : formProps) => {
-    console.log(data)
+    props.navigation.push("UserPassword", Object.assign({}, props.route.params, data))
   }
   return(
     <PageWrapper scrollable >
