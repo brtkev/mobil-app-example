@@ -10,6 +10,7 @@ import NavTop from 'src/components/navTop'
 import PageWrapper from 'src/components/pageWrapper'
 import TextApp from 'src/components/textApp'
 import {RegisterStackScreenProps} from 'src/components/types'
+import RegisterScreenWrapper from '../screenWrapper'
 import registerStyles from '../styles'
 
 
@@ -34,35 +35,26 @@ type formProps = {
   email : string
 }
 export default function UserInformation(props : RegisterStackScreenProps<"UserInfo">){
-  const [keyboardOffset, setKeyboardOffset] = useState(0); 
   const {formState: {errors}, register, setValue, handleSubmit, watch} = useForm<formProps>({resolver : yupResolver(useInformationSchema)})
   const watchers = watch(["email", "lastName", "name"])
-  useEffect(() => {
-    Keyboard.addListener("keyboardDidShow", e => setKeyboardOffset(e.endCoordinates.height))
-    Keyboard.addListener("keyboardDidHide", e => setKeyboardOffset(0))
-    
-  }, [])
   const submitHandler = (data : formProps) => {
     props.navigation.push("UserPassword", Object.assign({}, props.route.params, data))
   }
+  
   return(
-    <PageWrapper scrollable >
-      <View style={[styles.main, {height: styles.main.height + keyboardOffset, paddingBottom: keyboardOffset }]} >
-        <NavTop onPress={() => props.navigation.goBack()} />
-        <View style={[registerStyles.main, styles.contextBox ]} >
-          <View  >
-            <TextApp style={registerStyles.title} >Información Personal</TextApp>
-            <TextApp style={[registerStyles.textP, {marginBottom: 32}]} >Lorem ipsum dolor sit amet, conse ctetur adipiscing elit. Vestibulum, purus ut enim.</TextApp>
-            <Form errors={errors} register={register} setValue={setValue}  >
-              <LoginInput name='name' placeholder='Nombre' inputStyles={styles.inputStyle} />
-              <LoginInput name='lastName' placeholder='Apellido' inputStyles={styles.inputStyle} />
-              <LoginInput name='email' placeholder='Correo Electrónico' inputStyles={styles.inputStyle} />
-            </Form>
-          </View>
-          <LoginButton disabled={!(watchers.every((v) => v)) /* false if all the inputs have vals*/}
-           theme='signin'  title='CONTINUAR' onPress={handleSubmit(submitHandler)} />
-        </View>
+    <RegisterScreenWrapper backHandler={() => props.navigation.goBack()}
+     style={[registerStyles.main, styles.contextBox ]} >
+      <View  >
+        <TextApp style={registerStyles.title} >Información Personal</TextApp>
+        <TextApp style={[registerStyles.textP, {marginBottom: 32}]} >Lorem ipsum dolor sit amet, conse ctetur adipiscing elit. Vestibulum, purus ut enim.</TextApp>
+        <Form errors={errors} register={register} setValue={setValue}  >
+          <LoginInput name='name' placeholder='Nombre' inputStyles={styles.inputStyle} />
+          <LoginInput name='lastName' placeholder='Apellido' inputStyles={styles.inputStyle} />
+          <LoginInput name='email' placeholder='Correo Electrónico' inputStyles={styles.inputStyle} />
+        </Form>
       </View>
-    </PageWrapper>
+      <LoginButton disabled={!(watchers.every((v) => v)) /* false if all the inputs have vals*/}
+        theme='signin'  title='CONTINUAR' onPress={handleSubmit(submitHandler)} />
+    </RegisterScreenWrapper>
   )
 }
