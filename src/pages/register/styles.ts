@@ -6,7 +6,7 @@ const styles = StyleSheet.create({
     padding: 16
   },
   title:{
-    fontSize: 32, lineHeight: 32, marginBottom: 16, 
+    fontSize: 31, lineHeight: 32, marginBottom: 16, 
   },
   textP: {
     fontSize: 20, lineHeight: 24, color: colors.textSecondary, marginBottom: 32, 

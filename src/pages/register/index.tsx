@@ -9,7 +9,7 @@ const Stack = createNativeStackNavigator<RegisterStackParamList>()
 
 export default function Register(props : RootStackScreenProps<"Register">){
   return(
-    <Stack.Navigator initialRouteName='UserInfo' screenOptions={{headerShown: false}} >
+    <Stack.Navigator initialRouteName='UserPassword' screenOptions={{headerShown: false}} >
       <Stack.Screen name="Phone" component={PhoneVerify}  />
       <Stack.Screen name="CountrySelect" component={CountrySelect}  />
       <Stack.Screen name="VerifyCode" component={VerifyCode}  /> 
