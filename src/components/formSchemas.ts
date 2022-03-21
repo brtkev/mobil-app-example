@@ -1,3 +1,4 @@
+import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
 
 const onlyNumbersRegex = /^\d+$/;
@@ -28,16 +29,18 @@ export const userInformationSchema = yup.object().shape({
     .lowercase()
     .email('ingrese un email valido')
     .required('ingresa un email'),
-  // password: yup.string()
-  //   .min(8, 'la contraseña debe de tener al menos 8 caracteres')
-  //   .matches(lowerCaseRegex, 'la contraseña necesita al menos una minuscula')
-  //   .matches(upperCaseRegex, 'la contraseña necesita al menos una mayuscula')
-  //   .matches(numberRegex, 'la contraseña necesita al menos un numero')
-  //   .required("ingresa una contraseña"),
-  // passwordConfirm : yup.string()
-  //   .oneOf([yup.ref('password')], 'la contraseña no coincide')
-  //   .required('campo obligatorio'),
+  
   // subscription : yup.bool()
 })
 
-export const use
+export const userPasswordSchema = yup.object().shape({
+  password: yup.string()
+    .min(8, 'la contraseña debe de tener al menos 8 caracteres')
+    .matches(lowerCaseRegex, 'la contraseña necesita al menos una minuscula')
+    .matches(upperCaseRegex, 'la contraseña necesita al menos una mayuscula')
+    .matches(numberRegex, 'la contraseña necesita al menos un numero')
+    .required("ingresa una contraseña"),
+  passwordConfirm : yup.string()
+    .oneOf([yup.ref('password')], 'la contraseña no coincide')
+    .required('campo obligatorio'),
+})

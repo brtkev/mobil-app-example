@@ -23,7 +23,7 @@ const Form = ({children, register, errors, setValue} : Props) => {
           return React.cloneElement(child, {
             error : errors[child.props.name],
             key : child.props.name,
-            onChangeText : (v : string) => setValue(child.props.name, v), //<-- will set the value for the input in useForm
+            onChangeText : (v : string) => setValue(child.props.name, v.trim()), //<-- will set the value for the input in useForm
             onSubmitEditing : () => refs.current[i+1] && refs.current[i+1].focus(),//<-- focuses the next input in the form
             ...register(child.props.name, {value: ''}), 
             ref : (el : TextInput)  => refs.current.push(el),
