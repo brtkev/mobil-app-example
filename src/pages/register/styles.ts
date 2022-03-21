@@ -2,6 +2,9 @@ import { StyleSheet } from "react-native";
 import colors from "src/styles/colors";
 
 const styles = StyleSheet.create({
+  main:{
+    padding: 16
+  },
   title:{
     fontSize: 32, lineHeight: 32, marginBottom: 16, 
   },

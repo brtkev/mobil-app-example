@@ -1,5 +1,5 @@
-import React, { MutableRefObject, useState } from 'react';
-import {View, TextInput, TextInputProps, GestureResponderEvent} from 'react-native';
+import React, { useState } from 'react';
+import {View, TextInput, TextInputProps, StyleProp, TextStyle} from 'react-native';
 import { FieldError } from 'react-hook-form';
 
 import colors from 'src/styles/colors';
@@ -13,6 +13,7 @@ interface LoginInputProps extends TextInputProps{
   password? : boolean;
   error? : FieldError;
   name? : string;
+  inputStyles? : StyleProp<TextStyle>
 }
 
 //TextInput for login
@@ -22,7 +23,8 @@ interface LoginInputProps extends TextInputProps{
 //error comes from the errors of useForm
 //name is used for the useForm input naming
 const LoginInput = React.forwardRef<any, LoginInputProps>((props, ref): React.ReactElement =>{
-  const {label, password, style, error, secureTextEntry, name ,...inputProps } = props;
+  const {label, password, style, error, secureTextEntry, name ,
+    inputStyles, ...inputProps } = props;
   const [isFocus, setIsFocus] = useState(false);
   const [isSecure, setIsSecure] = useState(password);
   const inputRef  = useContinueRef<TextInput>(ref)
@@ -37,7 +39,7 @@ const LoginInput = React.forwardRef<any, LoginInputProps>((props, ref): React.Re
           {props.label}</TextApp>}
 
         <TextInput onFocus={() => setIsFocus(true)} onEndEditing={()=>setIsFocus(false)}
-        autoCapitalize="none" placeholderTextColor={colors.textTerciary} style={{color:"#fff"}} ref={inputRef}
+        autoCapitalize="none" placeholderTextColor={colors.textTerciary} style={[{color:"#fff"}, inputStyles]} ref={inputRef}
         secureTextEntry={isSecure} {...inputProps}  />
         <EyeButton {...{password, onPress: () => setIsSecure((prev) => !prev)}} />
       </View>

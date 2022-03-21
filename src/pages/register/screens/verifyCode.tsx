@@ -28,7 +28,7 @@ type formInput = {
 }
 
 export default function VerifyCode(props : RegisterStackScreenProps<"VerifyCode">){
-  const [countDown, setCountDown] = useState(10);
+  const [countDown, setCountDown] = useState(60);
   const { setValue, register, watch, handleSubmit, formState : {errors}} = useForm<formInput>({resolver: yupResolver(verifyCodeSchema)});
   const watcher = watch("code")
   useEffect(()=> {
@@ -37,11 +37,12 @@ export default function VerifyCode(props : RegisterStackScreenProps<"VerifyCode"
       return () => clearTimeout(timer);
     }
     
-  }, )
+  }, [countDown])
 
   const submitHandler = (data : formInput) => {
     //verify the code with the provider
     console.log(data);
+    props.navigation.push("UserInfo", props.route.params)
   }
 
   return(
@@ -62,7 +63,7 @@ export default function VerifyCode(props : RegisterStackScreenProps<"VerifyCode"
           <>
             <TextApp style={[registerStyles.smText, {color: colors.textSecondary,textAlign: "center", marginBottom: 16}]} >
             El codigo ha expirado</TextApp>
-            <TouchableOpacity onPress={getNewCode} ><TextApp  style={[registerStyles.smText, styles.text, {color: colors.terciary[400], textAlign: 'center'}]} >
+            <TouchableOpacity onPress={() => setCountDown(60)} ><TextApp  style={[registerStyles.smText, styles.text, {color: colors.terciary[400], textAlign: 'center'}]} >
               VOLVER A ENVIAR</TextApp></TouchableOpacity>
           </>
         }

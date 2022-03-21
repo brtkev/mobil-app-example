@@ -22,7 +22,10 @@ export type RegisterStackParamList = {
   };
   CountrySelect: undefined,
   VerifyCode: {
-    "phone" : string, country: string
+    phone : string, country: string
+  },
+  UserInfo: {
+    phone : string, country: string
   }
   
 }

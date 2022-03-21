@@ -1,14 +1,15 @@
-import { StyleSheet } from "react-native";
+import { StyleSheet, Dimensions, StatusBar } from "react-native";
 import colors from "src/styles/colors";
 
 
 const styles = StyleSheet.create({
   main:{
-    minHeight: '100%',
-    backgroundColor: colors.background,
+    minHeight: Dimensions.get("window").height - (StatusBar.currentHeight || 0),
+    backgroundColor: colors.background, flex: 1,
+    // borderColor: "white", borderWidth: 2
   },
   scrollView:{
-    flex: 1, width:"100%", display: "flex", minHeight: "100%"
+    flex : 1
   },
 });
 
