@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react'
 import { useForm } from 'react-hook-form'
 import { StatusBar,StyleSheet, View, Keyboard, Dimensions } from 'react-native'
 import Form from 'src/components/form'
-import { useInformationSchema } from 'src/components/formSchemas'
+import { userInformationSchema } from 'src/components/formSchemas'
 import LoginButton from 'src/components/loginButton'
 import LoginInput from 'src/components/loginInput'
 import NavTop from 'src/components/navTop'
@@ -35,7 +35,7 @@ type formProps = {
   email : string
 }
 export default function UserInformation(props : RegisterStackScreenProps<"UserInfo">){
-  const {formState: {errors}, register, setValue, handleSubmit, watch} = useForm<formProps>({resolver : yupResolver(useInformationSchema)})
+  const {formState: {errors}, register, setValue, handleSubmit, watch} = useForm<formProps>({resolver : yupResolver(userInformationSchema)})
   const watchers = watch(["email", "lastName", "name"])
   const submitHandler = (data : formProps) => {
     props.navigation.push("UserPassword", Object.assign({}, props.route.params, data))

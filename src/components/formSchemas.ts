@@ -21,7 +21,7 @@ export const loginSchema = yup.object().shape({
 });
 
 
-export const useInformationSchema = yup.object().shape({
+export const userInformationSchema = yup.object().shape({
   name: yup.string().trim().required('ingresa tu nombre'),
   lastName: yup.string().trim().required('ingresa tu apellido'),
   email: yup.string().trim()
@@ -39,3 +39,5 @@ export const useInformationSchema = yup.object().shape({
   //   .required('campo obligatorio'),
   // subscription : yup.bool()
 })
+
+export const use
