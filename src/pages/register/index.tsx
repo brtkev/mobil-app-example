@@ -5,18 +5,30 @@ import PhoneVerify from './screens/phoneVerify';
 import VerifyCode from './screens/verifyCode';
 import UserInformation from './screens/userInformation';
 import UserPassword from './screens/userPassword';
-import UserSecurityQuestions from './screens/UserSecurityQuestions';
+import UserSecurityQuestions from './screens/userSecurityQuestions';
+import React, {  useState } from 'react';
+import RegisterContext, {userProps} from './context';
 const Stack = createNativeStackNavigator<RegisterStackParamList>()
 
+
+
 export default function Register(props : RootStackScreenProps<"Register">){
+  const [userData, setUserData] = useState<userProps>({})
+  const updateData = (data : userProps) => setUserData(prev => Object.assign({}, prev, data));
+
   return(
-    <Stack.Navigator initialRouteName='userSecurityQuestions' screenOptions={{headerShown: false}} >
-      <Stack.Screen name="Phone" component={PhoneVerify}  />
-      <Stack.Screen name="CountrySelect" component={CountrySelect}  />
-      <Stack.Screen name="VerifyCode" component={VerifyCode}  /> 
-      <Stack.Screen name="UserInfo" component={UserInformation} />
-      <Stack.Screen name="UserPassword" component={UserPassword} />
-      <Stack.Screen name="userSecurityQuestions" component={UserSecurityQuestions} />
-    </Stack.Navigator>
+    <RegisterContext.Provider value={{
+      userData,
+      updateData
+    }} >
+      <Stack.Navigator initialRouteName='Phone' screenOptions={{headerShown: false}} >
+        <Stack.Screen name="Phone" component={PhoneVerify}  />
+        <Stack.Screen name="CountrySelect" component={CountrySelect}  />
+        <Stack.Screen name="VerifyCode" component={VerifyCode}  /> 
+        <Stack.Screen name="UserInfo" component={UserInformation} />
+        <Stack.Screen name="UserPassword" component={UserPassword} />
+        <Stack.Screen name="userSecurityQuestions" component={UserSecurityQuestions} />
+      </Stack.Navigator>
+    </RegisterContext.Provider>
   );
 }

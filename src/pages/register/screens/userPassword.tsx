@@ -10,6 +10,8 @@ import registerStyles from '../styles';
 import {userPasswordSchema} from 'src/components/formSchemas'
 import { yupResolver } from '@hookform/resolvers/yup'
 import Form from 'src/components/form'
+import RegisterContext from '../context'
+import { useContext } from 'react'
 
 const styles = StyleSheet.create({
   contextBox: {
@@ -27,8 +29,10 @@ type formProps = {
 export default function UserPassword(props : RegisterStackScreenProps<"UserPassword">){
   const {formState: {errors}, setValue, register, handleSubmit, watch} = useForm<formProps>({resolver: yupResolver(userPasswordSchema)});
   const watchers = watch(["password", "passwordConfirm"]);
+  
+  const {updateData} = useContext(RegisterContext);
   const submitHandler = (data : formProps) =>{
-    console.log(data)
+    updateData({ password : data.password});
     props.navigation.push("userSecurityQuestions")
   }
   return(

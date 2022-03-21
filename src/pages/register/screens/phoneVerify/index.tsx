@@ -10,12 +10,15 @@ import LoginInput from 'src/components/loginInput';
 import Select from 'src/components/loginInput/select';
 import LoginButton from 'src/components/loginButton';
 import colors from 'src/styles/colors';
-
+import { useContext } from 'react';
+import RegisterContext from '../../context';
 type phoneInput = {
   phone: string;
 }
 
 export default function PhoneVerify(props : RegisterStackScreenProps<"Phone">){
+  const {updateData, userData} = useContext(RegisterContext) || {};
+
   const {  register ,watch, setValue, handleSubmit } = useForm<phoneInput>();
   const watcher = watch("phone");
   function submitHandler(data : phoneInput){
@@ -23,10 +26,11 @@ export default function PhoneVerify(props : RegisterStackScreenProps<"Phone">){
       const phoneNumber = `+${props.route.params?.initialNumber}${data.phone}`;
       //send this to provider to send a message to the number if its valid
       //send menssage to this number
-      props.navigation.push("VerifyCode", {
+      updateData && updateData({
         phone: phoneNumber,
         country: props.route.params.country
       })
+      props.navigation.push("VerifyCode")
     }
   }
 

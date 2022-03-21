@@ -1,15 +1,14 @@
 import { yupResolver } from '@hookform/resolvers/yup'
-import { useEffect, useState } from 'react'
+import { useContext, } from 'react'
 import { useForm } from 'react-hook-form'
-import { StatusBar,StyleSheet, View, Keyboard, Dimensions } from 'react-native'
+import { StatusBar,StyleSheet, View, Dimensions } from 'react-native'
 import Form from 'src/components/form'
 import { userInformationSchema } from 'src/components/formSchemas'
 import LoginButton from 'src/components/loginButton'
 import LoginInput from 'src/components/loginInput'
-import NavTop from 'src/components/navTop'
-import PageWrapper from 'src/components/pageWrapper'
 import TextApp from 'src/components/textApp'
 import {RegisterStackScreenProps} from 'src/components/types'
+import RegisterContext from '../context'
 import RegisterScreenWrapper from '../screenWrapper'
 import registerStyles from '../styles'
 
@@ -37,8 +36,10 @@ type formProps = {
 export default function UserInformation(props : RegisterStackScreenProps<"UserInfo">){
   const {formState: {errors}, register, setValue, handleSubmit, watch} = useForm<formProps>({resolver : yupResolver(userInformationSchema)})
   const watchers = watch(["email", "lastName", "name"])
+  const {updateData} = useContext(RegisterContext);
   const submitHandler = (data : formProps) => {
-    props.navigation.push("UserPassword", Object.assign({}, props.route.params, data))
+    updateData(data)
+    props.navigation.push("UserPassword")
   }
   
   return(

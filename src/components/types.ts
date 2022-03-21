@@ -21,15 +21,9 @@ export type RegisterStackParamList = {
     "country": string
   };
   CountrySelect: undefined,
-  VerifyCode: {
-    phone : string, country: string
-  },
-  UserInfo: {
-    phone : string, country: string
-  },
-  UserPassword : {
-    phone : string, country: string, name: string, lastName: string, email: string
-  },
+  VerifyCode: undefined,
+  UserInfo: undefined
+  UserPassword : undefined
   userSecurityQuestions : undefined
   
 }
