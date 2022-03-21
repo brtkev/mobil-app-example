@@ -29,7 +29,8 @@ export type RegisterStackParamList = {
   },
   UserPassword : {
     phone : string, country: string, name: string, lastName: string, email: string
-  }
+  },
+  userSecurityQuestions : undefined
   
 }
 export type RegisterStackScreenProps<T extends keyof RegisterStackParamList > = NativeStackScreenProps<RegisterStackParamList, T>;

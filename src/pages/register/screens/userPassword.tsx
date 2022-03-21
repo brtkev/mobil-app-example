@@ -29,6 +29,7 @@ export default function UserPassword(props : RegisterStackScreenProps<"UserPassw
   const watchers = watch(["password", "passwordConfirm"]);
   const submitHandler = (data : formProps) =>{
     console.log(data)
+    props.navigation.push("userSecurityQuestions")
   }
   return(
     <RegisterScreenWrapper backHandler={() => props.navigation.goBack()}
