@@ -5,7 +5,7 @@ import colors from 'src/styles/colors';
 const GoToRegister = ({onPress} : TouchableOpacityProps) => {
 	return(
 		<View style={{display:"flex", flexDirection:"row", marginBottom: 32}} >
-			<TextApp style={{lineHeight: 20}} >
+			<TextApp style={{fontSize: 14, paddingTop: 2}} >
 				¿No tienes cuenta?&nbsp;
 			</TextApp>
 			<TouchableOpacity  onPress={onPress} >

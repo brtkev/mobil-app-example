@@ -9,7 +9,7 @@ const styles = StyleSheet.create({
     flex: 1, width:"100%", display: "flex"
   },
   logo : {
-    width: 72, height:80, marginBottom: 40, marginTop: 50 
+    width: 72, height:80, marginBottom: 40, marginTop: 50,  
   },
 });
 
