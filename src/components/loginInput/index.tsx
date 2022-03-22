@@ -43,7 +43,7 @@ const LoginInput = React.forwardRef<any, LoginInputProps>((props, ref): React.Re
         secureTextEntry={isSecure} {...inputProps}  />
         <EyeButton {...{password, onPress: () => setIsSecure((prev) => !prev)}} />
       </View>
-      <TextApp style={{color:colors.red[400]}}>{error && error.message}</TextApp>
+      {error && <TextApp style={{color:colors.red[400]}}>{error.message}</TextApp>}
     </View>
   );
 }); export default LoginInput;

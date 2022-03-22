@@ -1,9 +1,9 @@
 import { useState } from 'react'
-import { StyleSheet, GestureResponderEvent, View } from 'react-native'
-import ImportedSelectDropdown from 'react-native-select-dropdown'
+import { StyleSheet, View, ViewProps } from 'react-native'
 import colors from 'src/styles/colors'
 import { string } from 'yup'
-import Select from '../loginInput/select'
+import Select from './select'
+
 const countries = ["Egypt", "Canada", "Australia", "Ireland"]
 
 const styles = StyleSheet.create({
@@ -23,7 +23,7 @@ const styles = StyleSheet.create({
   }
 })
 
-interface Props {
+interface Props extends ViewProps{
   items : Array<string>,
   placeholder : string,
   onSelectValue? : (d : string, i : number ) => void
@@ -38,8 +38,7 @@ const options = (items : Array<string>, handler : optionHandlerType) => items.ma
   )
 })
 
-export default function SelectDropdown({items, placeholder, onSelectValue} : Props){
-  console.log(items)
+export default function SelectDropdown({items, placeholder, onSelectValue, ...props} : Props){
   const [dropDown, setDropDown] = useState(false);
   const [currentValue, setCurrentValue] = useState<string|undefined>(undefined);
   const toggleDropDown = () => setDropDown((prev) => !prev)
@@ -50,8 +49,10 @@ export default function SelectDropdown({items, placeholder, onSelectValue} : Pro
   } 
   const [selectOffset, setSelectOffset] = useState(0);
   return(
-    <View>
-    <Select onLayout={e => setSelectOffset(e.nativeEvent.layout.height)} placeholder={currentValue || placeholder} onPress={toggleDropDown}/>
+    <View {...props}>
+    <Select onLayout={e => setSelectOffset(e.nativeEvent.layout.height)} 
+      placeholder={currentValue || placeholder} onPress={toggleDropDown}
+    />
       <View style={[styles.optionContainer, {top: selectOffset + 8}]}>
         {dropDown && options(items, optionHandler)}
       </View>

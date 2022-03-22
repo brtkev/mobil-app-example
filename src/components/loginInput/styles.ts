@@ -7,7 +7,7 @@ const styles = StyleSheet.create({
     padding: 16,
     borderTopLeftRadius: 4,
     borderTopRightRadius: 4,
-    width: '100%',
+    width: '100%', 
   },
   focus:{
     backgroundColor : colors.inputs,
