@@ -29,7 +29,7 @@ export default function UserSecurityQuestions(props : RegisterStackScreenProps<"
 
   const submitHandler = (data : formInput) => {
     updateData(data);
-    console.log(userData)
+    props.navigation.push("pin");
   }
 
   return(

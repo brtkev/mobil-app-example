@@ -19,12 +19,13 @@ export type RegisterStackParamList = {
     "rightIcon"? : string,
     "initialNumber" : number,
     "country": string
-  };
+  },
   CountrySelect: undefined,
   VerifyCode: undefined,
-  UserInfo: undefined
-  UserPassword : undefined
-  userSecurityQuestions : undefined
+  UserInfo: undefined,
+  UserPassword : undefined,
+  userSecurityQuestions : undefined,
+  pin: undefined
   
 }
 export type RegisterStackScreenProps<T extends keyof RegisterStackParamList > = NativeStackScreenProps<RegisterStackParamList, T>;

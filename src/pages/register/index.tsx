@@ -8,6 +8,7 @@ import UserPassword from './screens/userPassword';
 import UserSecurityQuestions from './screens/userSecurityQuestions';
 import React, {  useState } from 'react';
 import RegisterContext, {userProps} from './context';
+import Pin from './screens/pin';
 const Stack = createNativeStackNavigator<RegisterStackParamList>()
 
 
@@ -21,13 +22,14 @@ export default function Register(props : RootStackScreenProps<"Register">){
       userData,
       updateData
     }} >
-      <Stack.Navigator initialRouteName='userSecurityQuestions' screenOptions={{headerShown: false}} >
+      <Stack.Navigator initialRouteName='pin' screenOptions={{headerShown: false}} >
         <Stack.Screen name="Phone" component={PhoneVerify}  />
         <Stack.Screen name="CountrySelect" component={CountrySelect}  />
         <Stack.Screen name="VerifyCode" component={VerifyCode}  /> 
         <Stack.Screen name="UserInfo" component={UserInformation} />
         <Stack.Screen name="UserPassword" component={UserPassword} />
         <Stack.Screen name="userSecurityQuestions" component={UserSecurityQuestions} />
+        <Stack.Screen name="pin" component={Pin} />
       </Stack.Navigator>
     </RegisterContext.Provider>
   );
