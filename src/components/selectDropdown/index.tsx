@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import { StyleSheet } from 'react-native'
 import ImportedSelectDropdown from 'react-native-select-dropdown'
 import colors from 'src/styles/colors'
@@ -18,8 +19,18 @@ const styles = StyleSheet.create({
   }
 })
 
-export default function SelectDropdown(){
+interface Props {
+  items : Array<{text : string, value : number }>,
+
+}
+
+export default function SelectDropdown({items} : Props){
+  const [dropDown, setDropDown] = useState(false);
+
   return(
-    <Select placeholder='Text123'/>
+    <>
+    <Select placeholder='Text123' onPress={() => console.log("aaaaa")}/>
+    {dropDown && <Select option placeholder='option1' onPress={() => console.log("aaaaa")}/>}
+    </>
   )
 }
