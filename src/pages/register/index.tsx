@@ -21,7 +21,7 @@ export default function Register(props : RootStackScreenProps<"Register">){
       userData,
       updateData
     }} >
-      <Stack.Navigator initialRouteName='Phone' screenOptions={{headerShown: false}} >
+      <Stack.Navigator initialRouteName='userSecurityQuestions' screenOptions={{headerShown: false}} >
         <Stack.Screen name="Phone" component={PhoneVerify}  />
         <Stack.Screen name="CountrySelect" component={CountrySelect}  />
         <Stack.Screen name="VerifyCode" component={VerifyCode}  /> 

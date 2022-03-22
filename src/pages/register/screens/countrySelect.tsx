@@ -33,7 +33,7 @@ const params = {
   },
   peru : {
     placeholder: "Peru (+51)",
-    rightIcon: require('assets/flags/argentina-flag.png'),
+    rightIcon: require('assets/flags/peru-flag.png'),
     initialNumber : 51,
     country : "peru"
   }
