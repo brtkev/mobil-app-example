@@ -31,10 +31,10 @@ interface Props extends TouchableOpacityProps {
   option? : boolean;
   selected? : boolean;
   rightIcon? : any; //image objects must be any
+  open? : boolean;
 }
 
-const Select = (props : Props) => {
-  const { style, placeholder, option, rightIcon, selected, ...TouchableProps } = props;
+const Select = ({ style, placeholder, option, rightIcon, selected, open,...TouchableProps } : Props) => {
   if(option)return(
     <TouchableHighlight style={[styles.optionContainer, style]} {...TouchableProps}
       underlayColor={colors.secondary[300]}
@@ -53,7 +53,8 @@ const Select = (props : Props) => {
         {rightIcon && <Image style={{height: 25, width: "auto", aspectRatio: 1, marginRight: 16, borderRadius: 4}} source={rightIcon} />}
         <TextApp style={{color: selected ? colors.textPrimary : colors.textTerciary}}>{placeholder}</TextApp>
         <View style={styles.iconContainer}>
-          <Image style={styles.icon} source={require('assets/icons/down-pointer.png')} />
+          {<Image style={styles.icon} 
+          source={open ? require('assets/icons/up-pointer.png') : require('assets/icons/down-pointer.png')} />}
         </View>
       </View>
     </TouchableHighlight>

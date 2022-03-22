@@ -49,6 +49,7 @@ export default function SelectDropdown({items, placeholder, onSelectValue, ...pr
     <View {...props}>
     <Select onLayout={e => setSelectOffset(e.nativeEvent.layout.height)} 
       placeholder={currentValue || placeholder} selected={currentValue !== undefined} onPress={toggleDropDown}
+      open={dropDown}
     />
       <View style={[styles.optionContainer, {top: selectOffset + 8}]}>
         {dropDown && options(items, optionHandler)}

@@ -34,7 +34,7 @@ export default function UserSecurityQuestions(props : RegisterStackScreenProps<"
 
   return(
     <RegisterScreenWrapper style={[styles.main, {flex:1 , justifyContent: "space-between", paddingBottom: 32}]} 
-    backHandler={() => props.navigation.goBack()} >
+    backHandler={() => props.navigation.goBack()} backIcon="exit" >
       <View>
         <TextApp style={{fontSize: 28}} >Preguntas de seguridad</TextApp>
         <TextApp style={[styles.smText, {lineHeight: 22, marginBottom: 32}]} >Lorem ipsum dolor sit amet, conse ctetur adipiscing elit.</TextApp>

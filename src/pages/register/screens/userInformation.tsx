@@ -43,7 +43,7 @@ export default function UserInformation(props : RegisterStackScreenProps<"UserIn
   }
   
   return(
-    <RegisterScreenWrapper backHandler={() => props.navigation.goBack()}
+    <RegisterScreenWrapper backHandler={() => props.navigation.goBack()} backIcon="exit"
      style={[registerStyles.main, styles.contextBox ]} >
       <View  >
         <TextApp style={registerStyles.title} >Información Personal</TextApp>

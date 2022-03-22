@@ -11,10 +11,11 @@ const styles = StyleSheet.create({
 })
 
 interface Props extends ViewProps{
-  backHandler? : TouchableWithoutFeedbackProps["onPress"]
+  backHandler? : TouchableWithoutFeedbackProps["onPress"];
+  backIcon? : "exit" | "back"
 }
 
-export default function RegisterScreenWrapper({backHandler, children, style,...props} : Props){
+export default function RegisterScreenWrapper({backHandler, backIcon,children, style,...props} : Props){
   const [keyboardOffset, setKeyboardOffset] = useState(0)
   useEffect(() => {
     Keyboard.addListener("keyboardDidShow", e => setKeyboardOffset(e.endCoordinates.height))
@@ -24,7 +25,7 @@ export default function RegisterScreenWrapper({backHandler, children, style,...p
   return(
     <PageWrapper scrollable>
       <View style={[styles.main, {height: styles.main.height + keyboardOffset, paddingBottom: keyboardOffset }]} >
-        <NavTop onPress={backHandler} />
+        <NavTop onPress={backHandler} backIcon={backIcon} />
         <View style={style}>
           {children}
         </View>
