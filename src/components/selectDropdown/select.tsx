@@ -12,7 +12,7 @@ const styles = StyleSheet.create({
   },
   optionContainer: {
     backgroundColor : colors.inputs,
-    padding: 16,
+    padding: 8,
     width: '100%',
   },
   icon:{

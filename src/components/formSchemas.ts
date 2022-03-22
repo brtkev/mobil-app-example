@@ -44,3 +44,11 @@ export const userPasswordSchema = yup.object().shape({
     .oneOf([yup.ref('password')], 'la contraseña no coincide')
     .required('campo obligatorio'),
 })
+
+export const securityQuestionsResolver = () => yupResolver(securityQuestions);
+export const securityQuestions = yup.object().shape({
+  securityQ1 : yup.string().required('campo obligatorio'),
+  securityA1 : yup.string().required('campo obligatorio'),
+  securityQ2 : yup.string().required('campo obligatorio'),
+  securityA2 : yup.string().required('campo obligatorio'),
+});

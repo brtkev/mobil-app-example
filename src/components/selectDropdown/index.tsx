@@ -1,10 +1,7 @@
 import { useState } from 'react'
 import { StyleSheet, View, ViewProps } from 'react-native'
 import colors from 'src/styles/colors'
-import { string } from 'yup'
 import Select from './select'
-
-const countries = ["Egypt", "Canada", "Australia", "Ireland"]
 
 const styles = StyleSheet.create({
   container:{
@@ -19,7 +16,7 @@ const styles = StyleSheet.create({
     fontSize: 20,
   },
   optionContainer:{
-    position: "absolute", top: 20, right: 0, left: 0
+    position: "absolute", top: 20, right: 0, left: 0, zIndex: 1000
   }
 })
 
@@ -51,7 +48,7 @@ export default function SelectDropdown({items, placeholder, onSelectValue, ...pr
   return(
     <View {...props}>
     <Select onLayout={e => setSelectOffset(e.nativeEvent.layout.height)} 
-      placeholder={currentValue || placeholder} onPress={toggleDropDown}
+      placeholder={currentValue || placeholder} selected={currentValue !== undefined} onPress={toggleDropDown}
     />
       <View style={[styles.optionContainer, {top: selectOffset + 8}]}>
         {dropDown && options(items, optionHandler)}

@@ -7,14 +7,15 @@ type Props = {
   children? : React.ReactElement | React.ReactElement[],
   register : UseFormRegister<any>,
   errors : FieldErrors<any>,
-  setValue : UseFormSetValue<any>
+  setValue : UseFormSetValue<any>,
+  noFocusNext? : boolean 
 }
 
 
 /* custom form component */
 // this component takes react-hook-form useForm params
 //and applies them to TextInput children which has been named "child.props.name"
-const Form = ({children, register, errors, setValue} : Props) => {
+const Form = ({children, register, errors, setValue, noFocusNext} : Props) => {
   const refs = useRef<Array<TextInput>>([]);
   return(
     <>
@@ -24,7 +25,8 @@ const Form = ({children, register, errors, setValue} : Props) => {
             error : errors[child.props.name],
             key : child.props.name,
             onChangeText : (v : string) => setValue(child.props.name, v.trim()), //<-- will set the value for the input in useForm
-            onSubmitEditing : () => refs.current[i+1] && refs.current[i+1].focus(),//<-- focuses the next input in the form
+            onSubmitEditing : noFocusNext ? //if true then pressing finish key won't make it so it focuses the next
+            () => '' : () => refs.current[i+1] && refs.current[i+1].focus(),//<-- focuses the next input in the form
             ...register(child.props.name, {value: ''}), 
             ref : (el : TextInput)  => refs.current.push(el),
           });
