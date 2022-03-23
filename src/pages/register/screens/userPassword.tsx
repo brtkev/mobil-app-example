@@ -12,6 +12,7 @@ import { yupResolver } from '@hookform/resolvers/yup'
 import Form from 'src/components/form'
 import RegisterContext from '../context'
 import { useContext } from 'react'
+import colors from 'src/styles/colors'
 
 const styles = StyleSheet.create({
   contextBox: {
@@ -19,6 +20,18 @@ const styles = StyleSheet.create({
   },
   inputStyle: {
     fontSize : registerStyles.textP.fontSize
+  },
+  main:{
+    display:"flex", justifyContent: "space-between", padding: 16, flex:1, paddingBottom: 24
+  },
+  title:{
+    fontSize: 24, marginBottom: 16, letterSpacing: 0.18, lineHeight: 24, paddingTop: 15,
+  },
+  p: {
+    fontSize: 16, lineHeight: 25, letterSpacing: 0.5, marginBottom: 32, color: colors.textSecondary
+  },
+  smP: {
+    fontSize: 12, lineHeight: 16, letterSpacing: 0.4
   }
 })
 
@@ -39,10 +52,11 @@ export default function UserPassword(props : RegisterStackScreenProps<"UserPassw
     <RegisterScreenWrapper backHandler={() => props.navigation.goBack()} backIcon="exit"
     style={[registerStyles.main, styles.contextBox]} >
       <View>
-        <TextApp style={registerStyles.title} >Configura una contraseña segura</TextApp>
-        <TextApp style={[registerStyles.textP, {marginBottom: 32}]} >Lorem ipsum dolor sit amet, conse ctetur adipiscing elit.</TextApp>
+        <TextApp style={styles.title} >Configura una contraseña segura</TextApp>
+        <TextApp style={styles.p} >Lorem ipsum dolor sit amet, conse ctetur adipiscing elit.</TextApp>
         <Form {...{register, setValue, errors}}>
-          <LoginInput name="password" placeholder='Contraseña' inputStyles={styles.inputStyle} password />
+          <LoginInput name="password" placeholder='Contraseña' inputStyles={styles.inputStyle} password 
+          style={{marginBottom: 24}} />
           <LoginInput name="passwordConfirm" placeholder='Repite la contraseña' inputStyles={styles.inputStyle} password />
         </Form>
       </View>

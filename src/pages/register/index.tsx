@@ -22,7 +22,7 @@ export default function Register(props : RootStackScreenProps<"Register">){
       userData,
       updateData
     }} >
-      <Stack.Navigator initialRouteName='pin' screenOptions={{headerShown: false}} >
+      <Stack.Navigator initialRouteName='Phone' screenOptions={{headerShown: false}} >
         <Stack.Screen name="Phone" component={PhoneVerify}  />
         <Stack.Screen name="CountrySelect" component={CountrySelect}  />
         <Stack.Screen name="VerifyCode" component={VerifyCode}  /> 

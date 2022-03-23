@@ -1,6 +1,6 @@
 import { useContext } from 'react'
 import { useForm } from 'react-hook-form'
-import { View } from 'react-native'
+import { StyleSheet, View } from 'react-native'
 import Form from 'src/components/form'
 import { securityQuestionsResolver } from 'src/components/formSchemas'
 import LoginButton from 'src/components/loginButton'
@@ -8,9 +8,26 @@ import LoginInput from 'src/components/loginInput'
 import SelectDropdown from 'src/components/selectDropdown'
 import TextApp from 'src/components/textApp'
 import {RegisterStackScreenProps} from 'src/components/types'
+import colors from 'src/styles/colors'
 import RegisterContext from '../context'
 import RegisterScreenWrapper from '../screenWrapper'
-import styles from '../styles'
+import registerStyles from '../styles'
+
+const styles = StyleSheet.create({
+  
+  main:{
+    display:"flex", justifyContent: "space-between", padding: 16, flex:1, paddingBottom: 24
+  },
+  title:{
+    fontSize: 24, marginBottom: 8, letterSpacing: 0.18, lineHeight: 24, paddingTop: 15,
+  },
+  p: {
+    fontSize: 16, lineHeight: 25, letterSpacing: 0.5, marginBottom: 32, color: colors.textSecondary
+  },
+  smP: {
+    fontSize: 12, lineHeight: 16, letterSpacing: 0.4
+  }
+})
 
 
 const items = ['¿En que ciudad naciste?', '¿Cómo se llama tu mejor amigo?', '¿País que quieras visitar?', '¿Cómo se llama tu Abuela?']
@@ -33,11 +50,11 @@ export default function UserSecurityQuestions(props : RegisterStackScreenProps<"
   }
 
   return(
-    <RegisterScreenWrapper style={[styles.main, {flex:1 , justifyContent: "space-between", paddingBottom: 32}]} 
+    <RegisterScreenWrapper style={[registerStyles.main, {flex:1 , justifyContent: "space-between", paddingBottom: 32}]} 
     backHandler={() => props.navigation.goBack()} backIcon="exit" >
       <View>
-        <TextApp style={{fontSize: 28}} >Preguntas de seguridad</TextApp>
-        <TextApp style={[styles.smText, {lineHeight: 22, marginBottom: 32}]} >Lorem ipsum dolor sit amet, conse ctetur adipiscing elit.</TextApp>
+        <TextApp style={styles.title} >Preguntas de seguridad</TextApp>
+        <TextApp style={styles.p} >Lorem ipsum dolor sit amet, conse ctetur adipiscing elit.</TextApp>
         <Form {...{register, setValue, errors}} noFocusNext >
           <SelectDropdown style={{marginBottom: 24}} placeholder="Selecciona una pregunta" items={items}
             onSelectValue={(data, i) => setValue('securityQ1', data)}

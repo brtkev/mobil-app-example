@@ -5,8 +5,8 @@ export type Theme = "default" | "red" | "signin" | "social";
 
 export const disabled = StyleSheet.create({
   container: {
-    backgroundColor : colors.textTerciary,
-    borderColor : colors.textTerciary
+    backgroundColor : colors.background[400],
+    borderColor : colors.background[400]
   },
   text:{
     color: colors.textPrimary

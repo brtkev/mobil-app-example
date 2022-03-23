@@ -1,29 +1,32 @@
-import { Image, View, StyleSheet, TextInput, TextInputProps, TouchableOpacity, Keyboard } from "react-native";
+import { Image, View, StyleSheet, TextInput, TextInputProps, TouchableOpacity, Keyboard, Alert } from "react-native";
 import TextApp from "src/components/textApp";
 import RegisterScreenWrapper from "../screenWrapper";
 import {RegisterStackScreenProps} from 'src/components/types'
-import React, { useRef, useState } from "react";
+import React, { useRef, useState, useContext } from "react";
 import { FieldError } from 'react-hook-form';
-import LoginInput from 'src/components/loginInput'
 import colors from "src/styles/colors";
-import { registerRootComponent } from "expo";
+import RegisterContext from '../context';
+
 
 const styles = StyleSheet.create({
   main: {
-    paddingTop: 50, justifyContent: "space-between", paddingHorizontal: 16, flex: 1, alignItems: "center",
+    paddingTop: 24, justifyContent: "space-between", paddingHorizontal: 16, flex: 1, alignItems: "center",
     paddingBottom: 50
   },
   image:{
-    width: 200, height: "auto", aspectRatio: 1, marginBottom: 20
+    width: 150, height: "auto", aspectRatio: 1, marginBottom: 32
   },
   title:{
-    fontSize: 28, marginBottom: 32
+    fontSize: 24, marginBottom: 24, letterSpacing: 0.18, lineHeight: 24, paddingTop: 15,
+  },
+  smP: {
+    fontSize: 12, lineHeight: 16, letterSpacing: 0.4, color: colors.textSecondary
   },
   inputContainer: {
     flexDirection: "row", width: "100%", justifyContent: "space-evenly", marginBottom: 32
   },
   input:{
-    borderWidth: 1, borderColor: colors.textPrimary, borderRadius: 16, paddingVertical: 12, paddingHorizontal: 24,
+    borderWidth: 1, borderColor: colors.textPrimary, borderRadius: 8, paddingVertical: 12, paddingHorizontal: 24,
     color: colors.textPrimary, textAlign: "center", fontSize: 20
   },
   bottomLink:{
@@ -52,14 +55,15 @@ const PinInput = React.forwardRef<any, PinInputProps>(({onChangeText,...props}, 
   }
   return(
     <TextInput onFocus={() => setIsFocus(true)} onEndEditing={()=>setIsFocus(false)} value={inputValue}
-    style={styles.input} keyboardType="number-pad" onKeyPress={handleKeyPress} maxLength={1} ref={ref} {...props}
-    
+      style={styles.input} keyboardType="number-pad" onKeyPress={handleKeyPress} maxLength={1} ref={ref} {...props}
     />
 
   );
 });
 
 export default function Pin(props : RegisterStackScreenProps<"pin"> ){
+
+  const {userData, updateData} = useContext(RegisterContext);
   const [pin, setPin] = useState(Array(4));
   const [pinRep, setPinRep] = useState(Array(4));
 
@@ -78,8 +82,12 @@ export default function Pin(props : RegisterStackScreenProps<"pin"> ){
   const verifyPin = () => {
     const newPin = pin.join('');
     const repeatedPin = pinRep.join('');
-    console.log(newPin, repeatedPin);
-    console.log(newPin == repeatedPin)
+    if(newPin === repeatedPin){
+      updateData({pin: newPin});
+
+      Alert.alert("register data", JSON.stringify(userData));
+    }
+    
   }
   
   return(
@@ -93,7 +101,7 @@ export default function Pin(props : RegisterStackScreenProps<"pin"> ){
           <PinInput ref={assignRef} onChangeText={(v) => onChangeTexthandler(v, 3)}/>
           <PinInput ref={assignRef} onChangeText={() => Keyboard.dismiss()} />
         </View>
-        {isRepeat && <TextApp>Repite tu codigo PIN</TextApp>}
+        {isRepeat && <TextApp style={styles.smP} >Repite tu codigo PIN</TextApp>}
 
       </View>
       {!isRepeat && <TouchableOpacity onPress={() => {setIsRepeat(true);clearInputs()}} >

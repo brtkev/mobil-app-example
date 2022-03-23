@@ -3,7 +3,7 @@ import colors from "../../styles/colors";
 
 const styles = StyleSheet.create({
   container : {
-    backgroundColor: colors.background, minHeight: '100%', display: "flex", 
+    backgroundColor: colors.background[800], minHeight: '100%', display: "flex", 
   },
   welcomeImage : {
     width: Dimensions.get('window').width, height:'auto',aspectRatio: 1, 
