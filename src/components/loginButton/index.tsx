@@ -22,7 +22,7 @@ const LoginButton = React.forwardRef<any, LoginButtonProps>((props, ref): React.
     activeOpacity: 1,
     underlayColor: styles.buttonPressed.backgroundColor, // <-- "backgroundColor" will be always overwritten by "underlayColor"
     style: [isPress || spinner ? styles.buttonPressed : styles.buttonContainer, style, 
-      props.disabled && !spinner ? disabled.container : {}], // <-- but you can still apply other style changes
+      props.disabled && !spinner ? disabled.container : {},], // <-- but you can still apply other style changes
     onHideUnderlay: () => setIsPress(false),
     onShowUnderlay: () => setIsPress(true),
     ...buttonProps

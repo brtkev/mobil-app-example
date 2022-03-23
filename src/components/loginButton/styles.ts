@@ -94,19 +94,24 @@ export const redStyles = StyleSheet.create({
     color: styles.text.color
   }),
 })
-
+// box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 export const signin = StyleSheet.create({
   buttonContainer : {
-  paddingHorizontal: 24, paddingVertical: 16,
-  backgroundColor: colors.primary[400],
-  borderRadius: 32,
-  display: "flex",
-  alignItems: "center",
-  opacity: 0.87,
-  borderColor: colors.primary[400],
-  borderWidth: 1,
-  borderStyle: "solid",
-    },
+    paddingHorizontal: 24, paddingVertical: 16,
+    backgroundColor: colors.primary[400],
+    borderRadius: 32,
+    display: "flex",
+    alignItems: "center",
+    opacity: 0.87,
+    borderColor: colors.primary[400],
+    borderWidth: 1,
+    borderStyle: "solid",
+    shadowColor: "#000",
+    shadowOffset: {height: 4, width: 0},
+    shadowRadius: 4,
+    shadowOpacity: 0.25,
+    elevation: 5
+  },
   buttonPressed: {
     paddingHorizontal: 24, paddingVertical: 16,
     backgroundColor: colors.primary[300],
@@ -117,6 +122,11 @@ export const signin = StyleSheet.create({
     borderColor: colors.primary[300],
     borderWidth: 1,
     borderStyle: "solid",
+    shadowColor: "#000",
+    shadowOffset: {height: 4, width: 0},
+    shadowRadius: 4,
+    shadowOpacity: 0.25,
+    elevation: 5
     },
   text: {
     color: colors.textPrimary,
@@ -186,6 +196,7 @@ export const logoStyle = StyleSheet.create({
     width: 24, height: 24, marginLeft:16
   }
 })
+
 
 export const styleFromTheme = ( theme : Theme | undefined) => {
   if(theme === "default"){

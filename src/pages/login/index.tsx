@@ -10,17 +10,22 @@ import styles from './styles';
 import PageWrapper from 'src/components/pageWrapper';
 import { RootStackParamList } from 'src/components/types'
 import { NativeStackScreenProps  } from '@react-navigation/native-stack';
-type props = NativeStackScreenProps<RootStackParamList, 'Login'>;
 
+
+type props = NativeStackScreenProps<RootStackParamList, 'Login'>;
+// radial-gradient(50% 50% at 50% 50%, rgba(255, 255, 255, 0.28) 0%, rgba(255, 255, 255, 0) 100%);
 export default function Login({navigation} : props) {
 
 
 	return (
 		<PageWrapper scrollable ><View style={styles.contentBox} >
-			<Image source={require('assets/logos/logo.png')} style={styles.logo} />
-			<TextApp style={{fontSize: 34, marginBottom: 24}} >
-				Iniciar Sesión
-			</TextApp>
+			<View style={styles.logoContainer}> 
+				<Image source={require('assets/images/radial-gradient.png')} style={styles.radialGradient} />
+				<Image source={require('assets/logos/logo.png')} style={styles.logo} />
+				<TextApp style={styles.title} >
+					Iniciar Sesión
+				</TextApp>
+			</View>
 			<LoginForm />
 			<Separator style={{marginBottom: 24, marginTop:32}} />
 			<LoginButton theme='social' leftIcon={require('assets/logos/google-logo.png')} style={{marginBottom: 16}} title='Continuar con Google' onPress={() => console.log("google press")} />
