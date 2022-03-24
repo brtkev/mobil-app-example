@@ -8,6 +8,7 @@ const colors = {
   textPrimary: "#FFFFFF",
   textSecondary: "#FFFFFFDE",
   textTerciary: "#FFFFFFA6",
-  inputs: "#1F2F4F"
+  inputs: "#1F2F4F",
+  green : "#56FF97"
 };
 export default colors;

@@ -6,7 +6,7 @@ import PageWrapper from "src/components/pageWrapper";
 const styles = StyleSheet.create({
   main:{
     display:"flex", justifyContent: "flex-start", flex:1,
-    height: Dimensions.get("window").height - (StatusBar.currentHeight || 0)
+    height: Dimensions.get("window").height 
   }
 })
 
@@ -20,7 +20,10 @@ export default function RegisterScreenWrapper({backHandler, backIcon,children, s
   useEffect(() => {
     Keyboard.addListener("keyboardDidShow", e => setKeyboardOffset(e.endCoordinates.height))
     Keyboard.addListener("keyboardDidHide", e => setKeyboardOffset(0))
-    
+    return () => {
+      Keyboard.removeAllListeners("keyboardDidShow")
+      Keyboard.removeAllListeners("keyboardDidHide")
+    }
   }, [])
   return(
     <PageWrapper scrollable>

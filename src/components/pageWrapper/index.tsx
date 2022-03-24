@@ -11,7 +11,7 @@ const PageWrapper = ({children, scrollable, ...props} : Props) => {
   if(scrollable) return(
     <SafeAreaView style={styles.main} >
 		  <ScrollView style={styles.scrollView} keyboardDismissMode="on-drag" >
-			  <StatusBar />
+			  <StatusBar backgroundColor="transparent" />
         {/* <View style={{height:StatusBar.currentHeight, width:1, backgroundColor: "white"}}></View> */}
         {children}
       </ScrollView>
@@ -20,7 +20,7 @@ const PageWrapper = ({children, scrollable, ...props} : Props) => {
 
   return(
   <View style={styles.main} >
-    <StatusBar />
+    <StatusBar backgroundColor="transparent" translucent />
     {children}
   </View>
   )
