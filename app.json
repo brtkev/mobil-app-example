@@ -5,11 +5,12 @@
     "version": "1.0.0",
     "scheme": "whitepay",
     "orientation": "portrait",
-    "icon": "./assets/icon.png",
+    "icon": "./assets/favicon.png",
     "splash": {
       "image": "./assets/splash.png",
       "resizeMode": "contain",
-      "backgroundColor": "#ffffff"
+      "backgroundColor": "#001337"
+      
     },
     "updates": {
       "fallbackToCacheTimeout": 0
@@ -22,13 +23,19 @@
     },
     "android": {
       "adaptiveIcon": {
-        "foregroundImage": "./assets/adaptive-icon.png",
-        "backgroundColor": "#FFFFFF"
+        "foregroundImage": "./assets/favicon.png",
+        "backgroundColor": "#001337"
       },
       "package": "com.bretkev.whitepay"
     },
     "web": {
       "favicon": "./assets/favicon.png"
+    },
+    "androidStatusBar" : {
+      "barStyle": "light-content",
+      "backgroundColor" : "#001337",
+      "translucent" : true
+
     }
   }
 }
