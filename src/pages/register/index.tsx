@@ -9,6 +9,7 @@ import UserSecurityQuestions from './screens/userSecurityQuestions';
 import React, {  useState } from 'react';
 import RegisterContext, {userProps} from './context';
 import Pin from './screens/pin';
+import Success from './screens/success';
 const Stack = createNativeStackNavigator<RegisterStackParamList>()
 
 
@@ -30,6 +31,7 @@ export default function Register(props : RootStackScreenProps<"Register">){
         <Stack.Screen name="UserPassword" component={UserPassword} />
         <Stack.Screen name="userSecurityQuestions" component={UserSecurityQuestions} />
         <Stack.Screen name="pin" component={Pin} />
+        <Stack.Screen name="success" component={Success} />
       </Stack.Navigator>
     </RegisterContext.Provider>
   );

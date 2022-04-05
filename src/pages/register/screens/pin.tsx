@@ -103,9 +103,8 @@ export default function Pin(props : RegisterStackScreenProps<"pin"> ){
         setIsNotequal(true);
       }
     }else{ //saves the pin and prepares to get the confirmation
-      setIsRepeat(true);
       setPin(_pin);
-      clearInputs();
+      props.navigation.navigate("success")
     }
   }
 

@@ -40,9 +40,7 @@ export default function SelectDropdown({items, placeholder, onSelectValue, ...pr
   const [dropDown, setDropDown] = useState(false);
   const [currentValue, setCurrentValue] = useState<string|undefined>(props.initialValue ? items[props.initialValue] : undefined);
   useState(() => {
-    console.log("render")
     if(typeof props.initialValue === "number"){
-      console.log("pass")
       onSelectValue && onSelectValue(items[props.initialValue], props.initialValue)
     } 
   })
