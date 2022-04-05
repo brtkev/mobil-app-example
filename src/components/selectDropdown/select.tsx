@@ -32,9 +32,10 @@ interface Props extends TouchableOpacityProps {
   selected? : boolean;
   rightIcon? : any; //image objects must be any
   open? : boolean;
+  inmutable?: boolean;
 }
 
-const Select = ({ style, placeholder, option, rightIcon, selected, open,...TouchableProps } : Props) => {
+const Select = ({ style, placeholder, option, rightIcon, selected, open, inmutable,...TouchableProps } : Props) => {
   if(option)return(
     <TouchableHighlight style={[styles.optionContainer, style]} {...TouchableProps}
       underlayColor={colors.secondary[300]}
@@ -47,13 +48,13 @@ const Select = ({ style, placeholder, option, rightIcon, selected, open,...Touch
   )
   return(
     <TouchableHighlight style={[styles.container, style]} {...TouchableProps}
-      underlayColor={colors.secondary[300]}
+      underlayColor={!inmutable ? colors.secondary[300] : ''}
     >
       <View style={ {display:"flex", flexDirection:"row", }} >
         {rightIcon && <Image style={{height: 25, width: "auto", aspectRatio: 1, marginRight: 16, borderRadius: 4}} source={rightIcon} />}
         <TextApp style={{color: selected ? colors.textPrimary : colors.textTerciary}}>{placeholder}</TextApp>
         <View style={styles.iconContainer}>
-          {<Image style={styles.icon} 
+          {!inmutable && <Image style={styles.icon} 
           source={open ? require('assets/icons/up-pointer.png') : require('assets/icons/down-pointer.png')} />}
         </View>
       </View>

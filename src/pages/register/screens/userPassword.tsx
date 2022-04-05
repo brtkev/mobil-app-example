@@ -46,7 +46,7 @@ export default function UserPassword(props : RegisterStackScreenProps<"UserPassw
   const {updateData} = useContext(RegisterContext);
   const submitHandler = (data : formProps) =>{
     updateData({ password : data.password});
-    props.navigation.push("userSecurityQuestions")
+    props.navigation.push(props.route.params?.nextScreen || "userSecurityQuestions")
   }
   return(
     <RegisterScreenWrapper backHandler={() => props.navigation.goBack()} backIcon="exit"

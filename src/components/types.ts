@@ -6,6 +6,7 @@ export type RootStackParamList = {
   Feed: { sort: 'latest' | 'top' } | undefined;
   Login: undefined;
   Register: undefined;
+  RecoverPassword : undefined
 };
 
 export type RootStackScreenProps<T extends keyof RootStackParamList> = 
@@ -18,14 +19,21 @@ export type RegisterStackParamList = {
     "placeholder" : string,
     "rightIcon"? : string,
     "initialNumber" : number,
-    "country": string
+    "country": string,
   },
   CountrySelect: undefined,
-  VerifyCode: undefined,
+  VerifyCode?: {
+    "nextScreen" : keyof RegisterStackParamList,
+  },
   UserInfo: undefined,
-  UserPassword : undefined,
-  userSecurityQuestions : undefined,
-  pin: undefined
+  UserPassword? : {
+    "nextScreen" : keyof RegisterStackParamList
+  },
+  userSecurityQuestions? : {
+    "nextScreen" : keyof RegisterStackParamList
+  },
+  pin: undefined,
+  success: undefined
   
 }
 export type RegisterStackScreenProps<T extends keyof RegisterStackParamList > = NativeStackScreenProps<RegisterStackParamList, T>;

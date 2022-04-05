@@ -46,9 +46,10 @@ export default function UserSecurityQuestions(props : RegisterStackScreenProps<"
 
   const submitHandler = (data : formInput) => {
     updateData(data);
-    props.navigation.push("pin");
+    props.navigation.push(props.route.params?.nextScreen || "pin");
   }
-
+  const onSelectValue1 = (data : string, i : number) => setValue('securityQ1', data)
+  const onSelectValue2 = (data : string, i : number) => setValue('securityQ2', data)
   return(
     <RegisterScreenWrapper style={[registerStyles.main, {flex:1 , justifyContent: "space-between", paddingBottom: 32}]} 
     backHandler={() => props.navigation.goBack()} backIcon="exit" >
@@ -57,12 +58,16 @@ export default function UserSecurityQuestions(props : RegisterStackScreenProps<"
         <TextApp style={styles.p} >Lorem ipsum dolor sit amet, conse ctetur adipiscing elit.</TextApp>
         <Form {...{register, setValue, errors}} noFocusNext >
           <SelectDropdown style={{marginBottom: 24}} placeholder="Selecciona una pregunta" items={items}
-            onSelectValue={(data, i) => setValue('securityQ1', data)}
+            onSelectValue={onSelectValue1}
+            initialValue={props.route.params?.nextScreen === "UserPassword" ? 0 : undefined}
+            inmutable
           />
           <LoginInput name="securityA1" style={{marginBottom: 32}} placeholder='Respuesta' />
 
           <SelectDropdown style={{marginBottom: 24}} placeholder="Selecciona una pregunta" items={items}
-            onSelectValue={(data, i) => setValue('securityQ2', data)}
+            onSelectValue={onSelectValue2}
+            initialValue={props.route.params?.nextScreen === "UserPassword" ? 2 : undefined}
+            inmutable
           />
           <LoginInput name="securityA2" style={{marginBottom: 32}} placeholder='Respuesta' />
         </Form>

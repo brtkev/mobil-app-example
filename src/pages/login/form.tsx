@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Alert } from "react-native"; 
+import { Alert, TouchableOpacityProps } from "react-native"; 
 
 import { useForm, SubmitHandler } from "react-hook-form";
 import { loginSchema } from 'src/components/formSchemas';
@@ -17,7 +17,9 @@ type loginInput = {
   password: string,
 };
 
-const LoginForm = () =>  {
+const LoginForm = (props : {
+  forgetPasswordOnPress ?: TouchableOpacityProps["onPress"]
+}) =>  {
   const { register, handleSubmit, formState: { errors }, setValue, watch } = useForm<loginInput>({mode : "onChange", resolver : yupResolver(loginSchema)});
   
   const watchers = watch(["email", "password"]);
@@ -36,7 +38,7 @@ const LoginForm = () =>  {
       <LoginInput  label='Correo Electrónico' placeholder='Correo Electrónico' name="email" style={{marginBottom: 24}} />
       <LoginInput label='Contraseña' placeholder='Contraseña' name="password" style={{marginBottom: 32}}
        password />
-      <GoToForgetPassword onPress={() => console.log("press on forget password")} />
+      <GoToForgetPassword onPress={props.forgetPasswordOnPress} />
 
       <LoginButton style={{width:"100%"}} theme="signin" title="INGRESAR" spinner={spinnerFlag}
        onPress={sumbitCallback} disabled={!(watchers.every((v) => v))/*false if all inputs have values*/} />

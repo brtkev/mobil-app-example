@@ -23,8 +23,9 @@ const styles = StyleSheet.create({
 interface Props extends ViewProps{
   items : Array<string>,
   placeholder : string,
-  onSelectValue? : (d : string, i : number ) => void
-
+  onSelectValue? : (d : string, i : number ) => void,
+  initialValue? : number,
+  inmutable?: boolean
 }
 
 type optionHandlerType = (item : string, i: number) => void
@@ -37,8 +38,15 @@ const options = (items : Array<string>, handler : optionHandlerType) => items.ma
 
 export default function SelectDropdown({items, placeholder, onSelectValue, ...props} : Props){
   const [dropDown, setDropDown] = useState(false);
-  const [currentValue, setCurrentValue] = useState<string|undefined>(undefined);
-  const toggleDropDown = () => setDropDown((prev) => !prev)
+  const [currentValue, setCurrentValue] = useState<string|undefined>(props.initialValue ? items[props.initialValue] : undefined);
+  useState(() => {
+    console.log("render")
+    if(typeof props.initialValue === "number"){
+      console.log("pass")
+      onSelectValue && onSelectValue(items[props.initialValue], props.initialValue)
+    } 
+  })
+  const toggleDropDown = () => !props.inmutable && setDropDown((prev) => !prev)
   const optionHandler : optionHandlerType = (item : string, i: number) => {
     setCurrentValue(item);
     toggleDropDown();
@@ -49,7 +57,7 @@ export default function SelectDropdown({items, placeholder, onSelectValue, ...pr
     <View {...props}>
     <Select onLayout={e => setSelectOffset(e.nativeEvent.layout.height)} 
       placeholder={currentValue || placeholder} selected={currentValue !== undefined} onPress={toggleDropDown}
-      open={dropDown}
+      open={dropDown} inmutable={props.inmutable}
     />
       <View style={[styles.optionContainer, {top: selectOffset + 8}]}>
         {dropDown && options(items, optionHandler)}

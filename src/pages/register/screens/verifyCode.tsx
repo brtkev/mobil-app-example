@@ -50,7 +50,7 @@ export default function VerifyCode(props : RegisterStackScreenProps<"VerifyCode"
   const submitHandler = (data : formInput) => {
     //verify the code with the provider
     console.log(data);
-    props.navigation.push("UserInfo", props.route.params)
+    props.navigation.push(props.route.params?.nextScreen || "UserInfo")
   }
 
   return(

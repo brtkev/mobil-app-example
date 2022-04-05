@@ -1,4 +1,5 @@
 import { createContext } from "react"
+import {AnyRootStackScreenProps} from 'src/components/types'
 
 export type userProps = {
   phone? : string, country?: string, name?: string, lastName?: string, 

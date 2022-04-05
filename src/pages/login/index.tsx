@@ -16,7 +16,8 @@ type props = NativeStackScreenProps<RootStackParamList, 'Login'>;
 // radial-gradient(50% 50% at 50% 50%, rgba(255, 255, 255, 0.28) 0%, rgba(255, 255, 255, 0) 100%);
 export default function Login({navigation} : props) {
 
-
+	const forgetPasswordPush = () => navigation.navigate("RecoverPassword")
+	const registerPush = () => navigation.navigate("Register")
 	return (
 		<PageWrapper scrollable ><View style={styles.contentBox} >
 			<View style={styles.logoContainer}> 
@@ -26,11 +27,11 @@ export default function Login({navigation} : props) {
 					Iniciar Sesión
 				</TextApp>
 			</View>
-			<LoginForm />
+			<LoginForm forgetPasswordOnPress={forgetPasswordPush} />
 			<Separator style={{marginBottom: 24, marginTop:32}} />
 			<LoginButton theme='social' leftIcon={require('assets/logos/google-logo.png')} style={{marginBottom: 16}} title='Continuar con Google' onPress={() => console.log("google press")} />
 			<LoginButton theme='social' leftIcon={require('assets/logos/facebook-logo.png')} style={{marginBottom: 44}} title='Continuar con Facebook' onPress={() => console.log("facebook press")} />
-			<GoToRegister onPress={() => navigation.navigate("Register")} />
+			<GoToRegister onPress={registerPush} />
 		</View></PageWrapper>
 	);
 }

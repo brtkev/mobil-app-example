@@ -5,6 +5,7 @@ import { TextStyle } from 'react-native';
 import Home from 'src/pages/home';
 import Login from 'src/pages/login';
 import Register from 'src/pages/register';
+import RecoverPassword from 'src/pages/recoverPassword';
 import AppContext from 'src/appContext';
 
 import { RootStackParamList } from './src/components/types';
@@ -20,10 +21,11 @@ function App() {
   return(
     <AppContext.Provider value={{poppinsLoaded: loaded}}>
       <NavigationContainer>
-        <Stack.Navigator initialRouteName='Home'>
-          <Stack.Screen name="Home" component={Home} options={{headerShown: false}} />
-          <Stack.Screen name="Login" component={Login} options={{headerShown: false}} />
-          <Stack.Screen name="Register" component={Register} options={{headerShown: false}} />
+        <Stack.Navigator initialRouteName='Home' screenOptions={{headerShown: false}} >
+          <Stack.Screen name="Home" component={Home} />
+          <Stack.Screen name="Login" component={Login} />
+          <Stack.Screen name="Register" component={Register} />
+          <Stack.Screen name="RecoverPassword" component={RecoverPassword} />
         </Stack.Navigator>
       </NavigationContainer>
     </AppContext.Provider>
