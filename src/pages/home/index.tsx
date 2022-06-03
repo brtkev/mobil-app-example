@@ -1,6 +1,8 @@
 import {View, Image, Text, StatusBar, Alert} from 'react-native';
 import styles from './styles';
 import LoginButton from 'src/components/loginButton';
+import Button from 'src/components/button';
+import colors from 'src/styles/colors';
 
 import { RootStackParamList } from 'src/components/types';
 import { NativeStackScreenProps  } from '@react-navigation/native-stack';
@@ -8,6 +10,7 @@ import PageWrapper from 'src/components/pageWrapper';
 type props = NativeStackScreenProps<RootStackParamList, 'Home'>;
 
 export default function Home({navigation  } : props) {
+    const navigate = () => navigation.navigate('Register');
     return (
       <PageWrapper>
         <Image  style={styles.welcomeImage} source={require('assets/images/welcome-image.png')} />
@@ -26,7 +29,18 @@ export default function Home({navigation  } : props) {
           {/* <Button title='INICIAR SESIÓN' onPress={() => Alert.alert('Simple Button pressed')} /> */}
           <View style={styles.buttonsContainer} >
             <LoginButton style={{marginRight:16}} title='INICIAR SESIÓN' onPress={() => navigation.navigate('Login')} />
-            <LoginButton theme="red" title='CREAR CUENTA' onPress={() => navigation.navigate('Register')} />
+            {/*<LoginButton  title='CREAR CUENTA' onPress={() => navigation.navigate('Register')} />*/}
+            <Button 
+              title='CREAR CUENTA'
+              onPress={navigate}
+              style={{
+                backgroundColor: colors.secondary[300],
+                borderWidth: 0
+              }}
+              stylePress={{
+                backgroundColor: colors.secondary[200]
+              }}
+              />
           </View>
           
         </View>

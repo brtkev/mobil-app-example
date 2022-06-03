@@ -5,8 +5,10 @@ import colors from 'src/styles/colors';
 const styles = StyleSheet.create({
 	container:{
 		display:"flex", justifyContent:"center", alignItems: "center", position: "relative",
-		height: 175,
-		bottom: -50
+		paddingTop: 44, 
+		// paddingBottom: 24
+		// height: 175,
+		// bottom: -50
 	},
 	radial:{
 		width: 460, height: 275
@@ -19,7 +21,7 @@ const styles = StyleSheet.create({
 const GoToRegister = ({onPress} : TouchableOpacityProps) => {
 	return(
 		<View style={styles.container} >
-			<Image style={styles.radial} source={require('assets/images/bottom-radial.png')} />
+			{/*<Image style={styles.radial} source={require('assets/images/bottom-radial.png')} />*/}
 			<View style={styles.textContainer} >
 				<TextApp style={{fontSize: 14, paddingTop: 2}} >
 					¿No tienes cuenta?&nbsp;

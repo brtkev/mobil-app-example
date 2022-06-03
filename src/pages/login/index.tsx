@@ -20,13 +20,13 @@ export default function Login({navigation} : props) {
 	const registerPush = () => navigation.navigate("Register")
 	return (
 		<PageWrapper scrollable ><View style={styles.contentBox} >
-			<View style={styles.logoContainer}> 
-				<Image source={require('assets/images/radial-gradient.png')} style={styles.radialGradient} />
-				<Image source={require('assets/logos/logo.png')} style={styles.logo} />
-				<TextApp style={styles.title} >
-					Iniciar Sesión
-				</TextApp>
-			</View>
+			{/*<View style={styles.logoContainer}> 
+				{<Image source={require('assets/images/radial-gradient.png')} style={styles.radialGradient} />}
+			</View>*/}
+			<Image source={require('assets/logos/logo.png')} style={styles.logo} />
+			<TextApp style={styles.title} >
+				Iniciar Sesión
+			</TextApp>
 			<LoginForm forgetPasswordOnPress={forgetPasswordPush} />
 			<Separator style={{marginBottom: 24, marginTop:32}} />
 			<LoginButton theme='social' leftIcon={require('assets/logos/google-logo.png')} style={{marginBottom: 16}} title='Continuar con Google' onPress={() => console.log("google press")} />
