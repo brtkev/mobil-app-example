@@ -4,7 +4,7 @@ import {Theme, styleFromTheme, logoStyle, disabled, styles, spin, spinnerLoop} f
 
 
 
-interface Button extends ButtonProps{
+export interface buttonProps extends ButtonProps{
   style?: ViewStyle,
   stylePress?: ViewStyle,
   textStyle?: TextStyle,
@@ -15,7 +15,7 @@ interface Button extends ButtonProps{
 }
 
 //Base Button Component
-const Button = React.forwardRef<any, Button>((
+const Button = React.forwardRef<any, buttonProps>((
   {
     style, 
     stylePress,
@@ -49,7 +49,7 @@ const Button = React.forwardRef<any, Button>((
       source={require('assets/icons/spinner.png')} /> :
       <>
       {leftIcon && <View style={logoStyle.container}><Image style={logoStyle.image} source={leftIcon} /></View>}
-      <Text style={[isPress ? styles.pressedText : styles.text, isPress ? textStyle : textStylePress, buttonProps.disabled ? disabled.text: {}]} >
+      <Text style={[isPress ? styles.pressedText : styles.text, textStyle ,isPress ? {} : textStylePress, buttonProps.disabled ? disabled.text: {}]} >
         {buttonProps.title}
       </Text>
       </>

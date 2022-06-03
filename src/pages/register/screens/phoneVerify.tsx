@@ -7,8 +7,9 @@ import {RegisterStackScreenProps} from 'src/components/types'
 import registerStyles from '../styles';
 // import styles from './styles';
 import LoginInput from 'src/components/loginInput';
+import Button from 'src/components/button'
 import Select from 'src/components/loginInput/select';
-import LoginButton from 'src/components/loginButton';
+import {LoginButton} from 'src/components/button/variants';
 import colors from 'src/styles/colors';
 import { useContext } from 'react';
 import RegisterContext from '../context';
@@ -65,9 +66,12 @@ export default function PhoneVerify(props : RegisterStackScreenProps<"Phone">){
         </View>
 
         <View >
-          <LoginButton style={{marginBottom: 16}} disabled={!watcher} theme='signin' 
-          leftIcon={require('assets/icons/smartphone.png')} title='VERIFICAR MI TELEFONO'
-           onPress={handleSubmit(submitHandler)} />
+          <LoginButton 
+            style={{marginBottom: 16}} 
+            disabled={!watcher} 
+            leftIcon={require('assets/icons/smartphone.png')} title='VERIFICAR MI TELEFONO'
+            onPress={handleSubmit(submitHandler)} 
+            />
           <TextApp style={styles.smP} >Al pulsar “Verificar mi Teléfono” Certifiqué que tengo 18 años o más y estoy de acuerdo con el </TextApp>
           <TouchableOpacity  onPress={() => console.log("to policy")} >
             <TextApp style={[styles.smP, {color:colors.secondary[200]}]} >

@@ -6,11 +6,14 @@ import { loginSchema } from 'src/components/formSchemas';
 import { yupResolver } from '@hookform/resolvers/yup';
 
 import LoginInput from 'src/components/loginInput';
-import LoginButton from "src/components/loginButton";
 import Form from "src/components/form";
 import GoToForgetPassword from "./goToForgetPassword";
 
 import TextApp from 'src/components/textApp'
+
+import Button from 'src/components/button';
+import {LoginButton} from 'src/components/button/variants';
+import colors from 'src/styles/colors';
 
 type loginInput = {
   email: string,
@@ -39,9 +42,13 @@ const LoginForm = (props : {
       <LoginInput label='Contraseña' placeholder='Contraseña' name="password" style={{marginBottom: 32}}
        password />
       <GoToForgetPassword onPress={props.forgetPasswordOnPress} />
+      <LoginButton 
+        title='INGRESAR'
+        onPress={sumbitCallback}
+        disabled={!(watchers.every((v) => v))}
+        spinner={spinnerFlag}
+        />
 
-      <LoginButton style={{width:"100%"}} theme="signin" title="INGRESAR" spinner={spinnerFlag}
-       onPress={sumbitCallback} disabled={!(watchers.every((v) => v))/*false if all inputs have values*/} />
     </Form>
   )
 }
