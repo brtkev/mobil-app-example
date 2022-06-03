@@ -7,7 +7,7 @@ import registerStyles from '../styles'
 import {RegisterStackScreenProps} from 'src/components/types'
 import colors from 'src/styles/colors';
 import LoginInput from 'src/components/loginInput';
-import LoginButton from 'src/components/loginButton';
+import {LoginButton} from 'src/components/button/variants';
 import { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { verifyCodeSchema } from 'src/components/formSchemas';
@@ -76,7 +76,10 @@ export default function VerifyCode(props : RegisterStackScreenProps<"VerifyCode"
     
     </View>
     <View>
-      <LoginButton  disabled={!watcher} theme='signin' onPress={handleSubmit(submitHandler)} title='CONTINUAR' />
+      <LoginButton  
+        disabled={!watcher} 
+        onPress={handleSubmit(submitHandler)} 
+        title='CONTINUAR' />
     </View>
   </RegisterScreenWrapper>
   );

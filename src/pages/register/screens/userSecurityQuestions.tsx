@@ -3,7 +3,7 @@ import { useForm } from 'react-hook-form'
 import { StyleSheet, View } from 'react-native'
 import Form from 'src/components/form'
 import { securityQuestionsResolver } from 'src/components/formSchemas'
-import LoginButton from 'src/components/loginButton'
+import {LoginButton} from 'src/components/button/variants';
 import LoginInput from 'src/components/loginInput'
 import SelectDropdown from 'src/components/selectDropdown'
 import TextApp from 'src/components/textApp'
@@ -60,14 +60,14 @@ export default function UserSecurityQuestions(props : RegisterStackScreenProps<"
           <SelectDropdown style={{marginBottom: 24}} placeholder="Selecciona una pregunta" items={items}
             onSelectValue={onSelectValue1}
             initialValue={props.route.params?.nextScreen === "UserPassword" ? 0 : undefined}
-            inmutable
+            inmutable={props.route.params?.nextScreen === "UserPassword"}
           />
           <LoginInput name="securityA1" style={{marginBottom: 32}} placeholder='Respuesta' />
 
           <SelectDropdown style={{marginBottom: 24}} placeholder="Selecciona una pregunta" items={items}
             onSelectValue={onSelectValue2}
             initialValue={props.route.params?.nextScreen === "UserPassword" ? 2 : undefined}
-            inmutable
+            inmutable={props.route.params?.nextScreen === "UserPassword"}
           />
           <LoginInput name="securityA2" style={{marginBottom: 32}} placeholder='Respuesta' />
         </Form>

@@ -4,7 +4,7 @@ import { useForm } from 'react-hook-form'
 import { StatusBar,StyleSheet, View, Dimensions } from 'react-native'
 import Form from 'src/components/form'
 import { userInformationSchema } from 'src/components/formSchemas'
-import LoginButton from 'src/components/loginButton'
+import {LoginButton} from 'src/components/button/variants'
 import LoginInput from 'src/components/loginInput'
 import TextApp from 'src/components/textApp'
 import {RegisterStackScreenProps} from 'src/components/types'
@@ -63,8 +63,11 @@ export default function UserInformation(props : RegisterStackScreenProps<"UserIn
           <LoginInput name='email' placeholder='Correo Electrónico' style={styles.inputMargin} inputStyles={styles.inputStyle} />
         </Form>
       </View>
-      <LoginButton disabled={!(watchers.every((v) => v)) /* false if all the inputs have vals*/}
-        theme='signin'  title='CONTINUAR' onPress={handleSubmit(submitHandler)} />
+      <LoginButton 
+        disabled={!(watchers.every((v) => v)) /* false if all the inputs have vals*/}
+        title='CONTINUAR' 
+        onPress={handleSubmit(submitHandler)} 
+        />
     </RegisterScreenWrapper>
   )
 }

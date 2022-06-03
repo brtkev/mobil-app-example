@@ -1,6 +1,6 @@
 import { useForm } from 'react-hook-form'
 import { StyleSheet, View } from 'react-native'
-import LoginButton from 'src/components/loginButton'
+import {LoginButton} from 'src/components/button/variants'
 import LoginInput from 'src/components/loginInput'
 import PageWrapper from 'src/components/pageWrapper'
 import TextApp from 'src/components/textApp'
@@ -60,8 +60,11 @@ export default function UserPassword(props : RegisterStackScreenProps<"UserPassw
           <LoginInput name="passwordConfirm" placeholder='Repite la contraseña' inputStyles={styles.inputStyle} password />
         </Form>
       </View>
-      <LoginButton disabled={!(watchers.every((v) => v)) /* false if all the inputs have vals*/}
-       theme='signin' title='CONTINUAR' onPress={handleSubmit(submitHandler)} />
+      <LoginButton 
+        disabled={!(watchers.every((v) => v)) /* false if all the inputs have vals*/}
+        title='CONTINUAR' 
+        onPress={handleSubmit(submitHandler)} 
+        />
     </RegisterScreenWrapper>
   )
 }
