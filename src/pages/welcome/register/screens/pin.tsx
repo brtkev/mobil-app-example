@@ -45,7 +45,7 @@ const PinInput = React.forwardRef<any, PinInputProps>(({error, success,...props}
   return(
     <TextInput defaultValue=''
       style={[styles.input, error ? {borderColor: colors.red[400]} : {},
-      success ? {borderColor: colors.green} : {}]}
+      success ? {borderColor: colors.green[200]} : {}]}
       keyboardType="number-pad" maxLength={1} ref={ref} {...props}
     />
 

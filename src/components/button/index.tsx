@@ -1,14 +1,15 @@
 import React, { useState } from 'react';
-import {View, Text, TouchableHighlight, ButtonProps, ViewStyle, TextStyle , Animated, Image} from 'react-native';
+import {View, Text, TouchableHighlight, ButtonProps, ViewStyle, ImageStyle, TextStyle , Animated, Image} from 'react-native';
 import {Theme, styleFromTheme, logoStyle, disabled, styles, spin, spinnerLoop} from './styles';
 
 
 
 export interface buttonProps extends ButtonProps{
-  style?: ViewStyle,
+  style?: ViewStyle | ViewStyle[],
   stylePress?: ViewStyle,
   textStyle?: TextStyle,
   textStylePress?: TextStyle,
+  leftIconStyle?: ImageStyle,
   spinner?: boolean,
   leftIcon?: any, // icon is any, but you should require() the icon you desire
   
@@ -23,6 +24,7 @@ const Button = React.forwardRef<any, buttonProps>((
     leftIcon,
     textStyle,
     textStylePress,
+    leftIconStyle,
     ...buttonProps}
   , ref): React.ReactElement =>{
   const [isPress, setIsPress] = useState(false); //state for pressed style
@@ -47,12 +49,12 @@ const Button = React.forwardRef<any, buttonProps>((
       {spinner ?
       <Animated.Image style={{transform: [{rotate: spin}], width: 24, height: 24}} 
       source={require('assets/icons/spinner.png')} /> :
-      <>
-      {leftIcon && <View style={logoStyle.container}><Image style={logoStyle.image} source={leftIcon} /></View>}
+      <View style={logoStyle.container}>
+      {leftIcon && <Image style={[logoStyle.image, leftIconStyle]} source={leftIcon} />}
       <Text style={[isPress ? styles.pressedText : styles.text, textStyle ,isPress ? {} : textStylePress, buttonProps.disabled ? disabled.text: {}]} >
         {buttonProps.title}
       </Text>
-      </>
+      </View>
       }
     </TouchableHighlight>
   )

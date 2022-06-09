@@ -1,4 +1,4 @@
-import {RootStackScreenProps, RegisterStackParamList} from 'src/components/types'
+import {WelcomeStackScreenProps, RegisterStackParamList} from 'src/components/types'
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import CountrySelect from './screens/countrySelect';
 import PhoneVerify from './screens/phoneVerify';
@@ -10,11 +10,11 @@ import React, {  useState } from 'react';
 import RegisterContext, {userProps} from './context';
 import Pin from './screens/pin';
 import Success from './screens/success';
-const Stack = createNativeStackNavigator<RegisterStackParamList>()
+const Stack = createNativeStackNavigator<RegisterStackParamList>();
 
 
 
-export default function Register(props : RootStackScreenProps<"Register">){
+export default function Register(props : WelcomeStackScreenProps<"Register">){
   const [userData, setUserData] = useState<userProps>({})
   const updateData = (data : userProps) => setUserData(prev => Object.assign({}, prev, data));
 

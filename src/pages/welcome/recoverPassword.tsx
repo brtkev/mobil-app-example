@@ -1,5 +1,5 @@
 import {createContext, useState} from 'react';
-import {RootStackScreenProps, RegisterStackParamList} from 'src/components/types'
+import {WelcomeStackScreenProps, RegisterStackParamList} from 'src/components/types'
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import RegisterContext, {userProps} from './register/context';
 
@@ -13,7 +13,7 @@ import Success from './register/screens/success';
 
 const Stack = createNativeStackNavigator<RegisterStackParamList>()
 
-export default function RecoverPassword(props : RootStackScreenProps<"RecoverPassword">){
+export default function RecoverPassword(props : WelcomeStackScreenProps<"RecoverPassword">){
   const [userData, setUserData] = useState<userProps>({})
   const updateData = (data : userProps) => setUserData(prev => Object.assign({}, prev, data));
 

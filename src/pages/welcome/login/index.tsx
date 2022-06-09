@@ -8,11 +8,11 @@ import GoToRegister from './goToRegister';
 import styles from './styles';
 
 import PageWrapper from 'src/components/pageWrapper';
-import { RootStackParamList } from 'src/components/types'
+import { WelcomeStackParamList } from 'src/components/types'
 import { NativeStackScreenProps  } from '@react-navigation/native-stack';
 
 
-type props = NativeStackScreenProps<RootStackParamList, 'Login'>;
+type props = NativeStackScreenProps<WelcomeStackParamList, 'Login'>;
 // radial-gradient(50% 50% at 50% 50%, rgba(255, 255, 255, 0.28) 0%, rgba(255, 255, 255, 0) 100%);
 export default function Login({navigation} : props) {
 

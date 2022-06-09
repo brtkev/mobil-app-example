@@ -40,7 +40,7 @@ export const styles = StyleSheet.create({
     backgroundColor: "transparent",
     borderRadius: 16,
     display: "flex",
-    alignItems: "center",
+    alignItems: "center", justifyContent: "center",
     opacity: 0.87,
     borderColor: colors.textPrimary,
     borderWidth: 1,
@@ -189,11 +189,11 @@ export const social = StyleSheet.create({
 
 export const logoStyle = StyleSheet.create({
   container : {
-    position: "absolute", top: 0, left: 0, right: 0, bottom: 0,
-    display:"flex", justifyContent: "center", alignItems: "flex-start"
+    width: "100%", display: "flex",
+    flexDirection: "row",
   },
   image : {
-    width: 24, height: 24, marginLeft:16
+    width: 24, height: 24, marginRight: 8,
   }
 })
 

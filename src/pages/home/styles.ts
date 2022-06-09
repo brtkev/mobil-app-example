@@ -1,37 +1,44 @@
-import { StyleSheet, Dimensions } from "react-native";
-import colors from "../../styles/colors";
+import { StyleSheet, Dimensions, StatusBar } from "react-native";
+import colors from "src/styles/colors";
 
 const styles = StyleSheet.create({
-  container : {
-    backgroundColor: colors.background[800], minHeight: '100%', display: "flex", 
+  
+  logoContainer: {
+    display: "flex", justifyContent:"center", alignItems:"center", position: "relative", width: "100%"
   },
-  welcomeImage : {
-    width: Dimensions.get('window').width, height:'auto',aspectRatio: 1, 
+  radial:{
+    width: Dimensions.get('window').width, height:'auto',aspectRatio: 1, position: "absolute", resizeMode: "contain"
   },
-  contentBox : {
-    paddingHorizontal: 16, paddingBottom: 24, display: "flex", flex: 1,
-    alignItems: "center", justifyContent : "space-between", 
+  logo:{
+    width:Dimensions.get('window').width/3, resizeMode: "contain"
   },
-  textBox : {
-    display: "flex", alignItems: "center", justifyContent : "center",
+  balanceContainer:{
+    backgroundColor: colors.background[500], width: Dimensions.get("window").width-32, height: 200, 
+    marginHorizontal: 16, marginBottom: 40,
+    paddingVertical: 32,
+    display: "flex", alignItems: "center",
+    borderRadius: 8,
+    shadowColor: "#000",
+    shadowOffset: {height: 4, width: 0},
+    shadowRadius: 4,
+    shadowOpacity: 0.25,
+    elevation: 10
   },
-  whitepayText: {
-    color: colors.secondary[300], fontWeight: "500", lineHeight: 24, fontSize: 20, marginTop : 8
+  buttonContainer:{
+    width: Dimensions.get("window").width-32, borderColor: "white", borderWidth: 2,
+    marginHorizontal: 16,
+    display: "flex", flexDirection: "row"
   },
-  titleText: {
-    color: colors.textPrimary, lineHeight: 24, fontSize: 20, letterSpacing: 0.18,
-    textAlign: "center", marginTop : 12
-  },
-  pText: {
-    color: colors.textSecondary, lineHeight: 24, fontSize: 16, letterSpacing: 0.5,
-    textAlign: "center", marginVertical : 24
-  },
-  buttonsContainer: {
-    display:'flex',flexDirection:"row", justifyContent: 'center', 
-  },
-  redButton: {
-    backgroundColor: colors.primary[400],
-    borderWidth: 0
+  button:{
+    flex: 1,
+    shadowColor: "#000",
+    shadowOffset: {height: 4, width: 0},
+    shadowRadius: 4,
+    shadowOpacity: 0.25,
+    elevation: 10,
+    paddingHorizontal: 12,
+    paddingVertical: 16
+
   }
 
 });

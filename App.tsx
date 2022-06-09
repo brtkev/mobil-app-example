@@ -1,15 +1,13 @@
 import React, { createContext, useEffect } from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import { TextStyle } from 'react-native';
-import Home from 'src/pages/home';
-import Login from 'src/pages/login';
-import Register from 'src/pages/register';
-import RecoverPassword from 'src/pages/recoverPassword';
 import AppContext from 'src/appContext';
 
 import { RootStackParamList } from './src/components/types';
 import { useFonts } from 'expo-font';
+
+import Home from 'src/pages/home'
+import Welcome from 'src/pages/welcome'
 const Stack = createNativeStackNavigator<RootStackParamList>();
 
 
@@ -21,11 +19,9 @@ function App() {
   return(
     <AppContext.Provider value={{poppinsLoaded: loaded}}>
       <NavigationContainer>
-        <Stack.Navigator initialRouteName='Home' screenOptions={{headerShown: false}} >
+        <Stack.Navigator initialRouteName="Home" screenOptions={{headerShown: false}} >
           <Stack.Screen name="Home" component={Home} />
-          <Stack.Screen name="Login" component={Login} />
-          <Stack.Screen name="Register" component={Register} />
-          <Stack.Screen name="RecoverPassword" component={RecoverPassword} />
+          <Stack.Screen name="Welcome" component={Welcome} />
         </Stack.Navigator>
       </NavigationContainer>
     </AppContext.Provider>

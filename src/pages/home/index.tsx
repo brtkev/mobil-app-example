@@ -3,77 +3,54 @@ import styles from './styles';
 import LoginButton from 'src/components/loginButton';
 import Button from 'src/components/button';
 import colors from 'src/styles/colors';
+import TextApp from 'src/components/textApp'
 
-import { RootStackParamList } from 'src/components/types';
+import { WelcomeStackParamList } from 'src/components/types';
 import { NativeStackScreenProps  } from '@react-navigation/native-stack';
 import PageWrapper from 'src/components/pageWrapper';
-type props = NativeStackScreenProps<RootStackParamList, 'Home'>;
+type props = NativeStackScreenProps<WelcomeStackParamList, 'Welcome'>;
 
-export default function Home({navigation  } : props) {
+function Home({navigation  } : props) {
     const navigate = () => navigation.navigate('Register');
     return (
       <PageWrapper>
-        <Image  style={styles.welcomeImage} source={require('assets/images/welcome-image.png')} />
-        <View style={styles.contentBox} >
-          <View  style={styles.textBox}>
-            <Text style={styles.whitepayText} >
-              WhitePay
-            </Text>
-            <Text style={styles.titleText} >
-              ¡La mejor billetera en dolares online!
-            </Text>
-            <Text style={styles.pText} >
-            Lorem ipsum dolor sit amet consectetur adipiscing elit. Morbi ut duis lorem vitae, scelerisquest.Lorem  
-            </Text>
-          </View>
-          {/* <Button title='INICIAR SESIÓN' onPress={() => Alert.alert('Simple Button pressed')} /> */}
-          <View style={styles.buttonsContainer} >
-            <LoginButton style={{marginRight:16}} title='INICIAR SESIÓN' onPress={() => navigation.navigate('Login')} />
-            {/*<LoginButton  title='CREAR CUENTA' onPress={() => navigation.navigate('Register')} />*/}
-            <Button 
-              title='CREAR CUENTA'
-              onPress={navigate}
-              style={{
-                backgroundColor: colors.secondary[300],
-                borderWidth: 0
-              }}
-              stylePress={{
-                backgroundColor: colors.secondary[200]
-              }}
-              />
-          </View>
-          
+        <View style={styles.logoContainer}> 
+          <Image source={require('assets/images/homeRadial.png')} style={styles.radial} />
+          <Image  source={require('assets/images/homeLogo.png')} style={styles.logo} />
         </View>
+        <View style={styles.balanceContainer}  >
+          <TextApp style={{marginBottom : 8, fontSize: 16}} >
+            Hola, Jhon Doe
+          </TextApp>
+          <TextApp style={{marginBottom : 16, fontSize: 14}} >
+            Saldo total:
+          </TextApp>
+          <TextApp  >
+            <TextApp style={{fontSize: 34}} >$300.00 </TextApp>
+            <TextApp  style={{marginLeft: 8, fontSize: 16}} >
+              USD
+            </TextApp>
+          </TextApp>
+        </View>
+        <View style={styles.buttonContainer} >
+          <Button  
+            leftIcon={require('assets/icons/trending-up.png')}
+            leftIconStyle={{width: 16, height: 16, marginLeft: 32}}
+            style={[styles.button, {marginRight: 15, backgroundColor: colors.green[400], borderWidth: 0}]}
+            title="CARGAR"
+            onPress={()=>{}}
+            />
+          <Button  
+            leftIcon={require('assets/icons/trending-down.png')}
+            leftIconStyle={{width: 16, height: 16, marginLeft: 32}}
+            style={[styles.button, {backgroundColor: colors.primary[400], borderWidth: 0}]}
+            title="RETIRAR"
+            onPress={()=>{}}
+            />
+        </View>
+
       </PageWrapper>
     );
   }
 
-
-
-// const styles = StyleSheet.create({
-//   container: {
-//     // backgroundColor: 'red',
-//     // minWidth: '100%',
-//     minHeight: '100%',
-//     paddingHorizontal: '16px',
-//     paddingBottom: '24px',
-
-//   },
-//   // image: {
-//   //   width : '100vw',
-//   //   height : 'auto'
-//   // },
-//   // loginButton: {
-//   //   fontFamily : 'Poppins',
-//   //   fontWeight : '500',
-//   //   fontSize : 14,
-//   //   lineHeight: 16,
-//   //   display: "flex",
-//   //   alignItems: "center",
-//   //   textAlign: "center",
-//   //   letterSpacing: 1.25,
-//   //   color: '#FFFFFFE5',
-//   //   opacity: 0.87,
-//   //   padding: '16px 18px'
-//   // }
-// });
+export default Home;
