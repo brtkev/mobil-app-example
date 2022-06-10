@@ -1,15 +1,14 @@
-import {View, Image, Text, StatusBar, Alert} from 'react-native';
+import {View, Image,} from 'react-native';
 import styles from './styles';
-import LoginButton from 'src/components/loginButton';
 import Button from 'src/components/button';
 import colors from 'src/styles/colors';
 import TextApp from 'src/components/textApp'
 
-import { WelcomeStackParamList } from 'src/components/types';
+import { RootStackParamList, HomeStackParamList } from 'src/components/types';
 import { NativeStackScreenProps  } from '@react-navigation/native-stack';
 import PageWrapper from 'src/components/pageWrapper';
-type props = NativeStackScreenProps<WelcomeStackParamList, 'Welcome'>;
 
+type componentProps = NativeStackScreenProps<HomeStackParamList, 'home'>;
 const constants = {
   homeRadialImage : require('assets/images/homeRadial.png'),
   homeLogo : require('assets/images/homeLogo.png'),
@@ -24,8 +23,8 @@ const constants = {
   menuIcon : require('assets/icons/Hamburger_MD.png'),
   homeBottomRadial : require('assets/images/home-bottom-ellipse.png')
 }
-function Home({navigation  } : props) {
-    const navigate = () => navigation.navigate('Register');
+function HomeComponent({navigation  } : componentProps) {
+    const toCharge = () => navigation.navigate('charge');
 
     return (
       <PageWrapper style={styles.page} >
@@ -54,7 +53,7 @@ function Home({navigation  } : props) {
               leftIconStyle={styles.buttonLeftIconStyle}
               style={constants.cashInButtonStyle}
               title="CARGAR"
-              onPress={()=>{}}
+              onPress={toCharge}
               />
             <Button  
               leftIcon={constants.trendingDownIcon}
@@ -71,7 +70,7 @@ function Home({navigation  } : props) {
     );
   }
 
-export default Home;
+
 
 
 function NavBar(){
@@ -115,3 +114,19 @@ function NavBar(){
     </View>
    );
 }
+
+
+import Charge from 'src/pages/home/charge'
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+type props = NativeStackScreenProps<RootStackParamList, 'Home'>;
+const Stack = createNativeStackNavigator<HomeStackParamList>();
+function Home({navigation  } : props){
+  return(
+    <Stack.Navigator initialRouteName='home' screenOptions={{headerShown: false}} >
+      <Stack.Screen name="home" component={HomeComponent} />
+      <Stack.Screen name="charge" component={Charge} />
+      {/*<Stack.Screen name="withdraw" component={Register} />*/}
+    </Stack.Navigator>
+  );
+}
+export default Home;

@@ -7,6 +7,15 @@ export type RootStackParamList = {
 export type RootStackScreenProps<T extends keyof RootStackParamList> = NativeStackScreenProps<RootStackParamList, T>;
 export type AnyRootStackScreenProps = NativeStackScreenProps<RootStackParamList, keyof RootStackParamList>;
 
+
+export type HomeStackParamList = {
+  home: undefined;
+  charge: undefined;
+  withdraw: undefined;
+}
+export type HomeStackScreenProps<T extends keyof HomeStackParamList> = NativeStackScreenProps<HomeStackParamList, T>;
+export type AnyHomeStackScreenProps = NativeStackScreenProps<HomeStackParamList, keyof HomeStackParamList>;
+
 export type WelcomeStackParamList = {
   Welcome: undefined;
   Login: undefined;
