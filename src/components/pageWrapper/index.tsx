@@ -9,7 +9,7 @@ interface Props extends ViewProps{
 const PageWrapper = ({children, scrollable, ...props} : Props) => {
 
   if(scrollable) return(
-    <SafeAreaView style={styles.main} >
+    <SafeAreaView style={[styles.main, props.style]} >
 		  <ScrollView style={styles.scrollView} keyboardDismissMode="on-drag" >
 			  <StatusBar backgroundColor="transparent" />
         {/* <View style={{height:StatusBar.currentHeight, width:1, backgroundColor: "white"}}></View> */}
@@ -19,7 +19,7 @@ const PageWrapper = ({children, scrollable, ...props} : Props) => {
   );
 
   return(
-  <View style={styles.main} >
+  <View style={[styles.main, props.style]} >
     <StatusBar backgroundColor="transparent" translucent />
     {children}
   </View>

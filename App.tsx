@@ -30,19 +30,3 @@ function App() {
 
 export default App;
 
-// import { StatusBar } from 'expo-status-bar';
-// import { StyleSheet, Text, View } from 'react-native';
-// // import Home from './components/home';
-// import Auth from './components/auth'
-
-
-
-// export default function App() {
-//   return (
-//     <View style={styles.container}>
-//       <Text>whitepay!</Text>
-//       <Auth></Auth>
-//       <StatusBar style="auto" />
-//     </View>
-//   );
-// }

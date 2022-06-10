@@ -49,11 +49,11 @@ const Button = React.forwardRef<any, buttonProps>((
       {spinner ?
       <Animated.Image style={{transform: [{rotate: spin}], width: 24, height: 24}} 
       source={require('assets/icons/spinner.png')} /> :
-      <View style={logoStyle.container}>
-      {leftIcon && <Image style={[logoStyle.image, leftIconStyle]} source={leftIcon} />}
-      <Text style={[isPress ? styles.pressedText : styles.text, textStyle ,isPress ? {} : textStylePress, buttonProps.disabled ? disabled.text: {}]} >
-        {buttonProps.title}
-      </Text>
+      <View style={[logoStyle.container, buttonProps.title === "" && {justifyContent: "center"}]}>
+        {leftIcon && <Image style={[logoStyle.image, leftIconStyle]} source={leftIcon} />}
+        <Text style={[isPress ? styles.pressedText : styles.text, textStyle ,isPress ? {} : textStylePress, buttonProps.disabled ? disabled.text: {}]} >
+          {buttonProps.title}
+        </Text>
       </View>
       }
     </TouchableHighlight>
